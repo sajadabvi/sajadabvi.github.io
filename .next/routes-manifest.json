@@ -2,8 +2,16 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "",
+  "basePath": "/sajadabvi.github.io",
   "redirects": [
+    {
+      "source": "/sajadabvi.github.io",
+      "destination": "/sajadabvi.github.io/",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/sajadabvi\\.github\\.io$"
+    },
     {
       "source": "/:file((?!\\.well-known(?:/.*)?)(?:[^/]+/)*[^/]+\\.\\w+)/",
       "destination": "/:file",
@@ -112,5 +120,15 @@
     "pathHeader": "x-nextjs-rewritten-path",
     "queryHeader": "x-nextjs-rewritten-query"
   },
-  "rewrites": []
+  "rewrites": {
+    "beforeFiles": [
+      {
+        "source": "/sajadabvi.github.io//_next/:path+",
+        "destination": "/sajadabvi.github.io/_next/:path+",
+        "regex": "^/sajadabvi\\.github\\.io//_next(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))(?:/)?$"
+      }
+    ],
+    "afterFiles": [],
+    "fallback": []
+  }
 }
