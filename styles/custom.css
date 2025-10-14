@@ -55,3 +55,13 @@ main.container .text-center p{
     padding:0.3rem 0.7rem;
   }
 }
+.hamburger{background:transparent;border:none;font-size:1.5rem;line-height:1;padding:.25rem .5rem;cursor:pointer}
+@media (min-width:901px){
+  .hamburger{display:none}
+  header nav .nav-links{display:flex !important;flex-direction:row}
+}
+@media (max-width:900px){
+  header nav{flex-direction:row;align-items:center}
+  header nav .nav-links{display:none;flex-direction:column;width:100%;gap:.5rem;margin-top:.5rem}
+  header nav .nav-links.open{display:flex}
+}
