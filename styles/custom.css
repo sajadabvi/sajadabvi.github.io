@@ -45,14 +45,14 @@ header nav {
 }
 
 /* ==============================================
-   HAMBURGER BUTTON - ALWAYS VISIBLE ON MOBILE
+   HAMBURGER BUTTON - VISIBLE BY DEFAULT (MOBILE FIRST)
    ============================================== */
 
 #menuToggle,
 button#menuToggle,
 .hamburger,
 button.hamburger {
-  display: none !important; /* Hidden by default */
+  display: inline-flex !important; /* Visible by default for mobile */
   flex-shrink: 0 !important;
   background: transparent !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
@@ -93,20 +93,24 @@ button.hamburger {
 header nav .font-bold {
   flex: 1 !important;
   text-align: center !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
+  white-space: normal !important;  /* Allow wrapping */
+  overflow: visible !important;    /* Don't hide overflow */
+  text-overflow: clip !important;  /* Don't truncate */
   order: 0 !important;
+  padding: 0 0.5rem !important;
+  font-size: 1rem !important;      /* Adjust for mobile */
 }
 
 /* ==============================================
-   NAVIGATION LINKS - HIDDEN BY DEFAULT
+   NAVIGATION LINKS - HIDDEN BY DEFAULT (MOBILE FIRST)
    ============================================== */
 
 #mobileMenu,
 .nav-links,
 div.nav-links,
-#mobileMenu.nav-links {
+#mobileMenu.nav-links,
+header nav .nav-links,
+header nav div.nav-links {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -120,13 +124,18 @@ div.nav-links,
   margin: 0 !important;
   padding: 0 !important;
   order: 999 !important;
+  flex-direction: column !important;
+  background: #1f2937 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  border-bottom-left-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
 }
 
 /* ==============================================
-   DESKTOP STYLES (≥901px)
+   DESKTOP STYLES (≥1025px) - TABLETS AND LARGER
    ============================================== */
 
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
   /* Hide hamburger on desktop */
   #menuToggle,
   button#menuToggle,
@@ -140,7 +149,9 @@ div.nav-links,
   #mobileMenu,
   .nav-links,
   div.nav-links,
-  #mobileMenu.nav-links {
+  #mobileMenu.nav-links,
+  header nav .nav-links,
+  header nav div.nav-links {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -154,6 +165,7 @@ div.nav-links,
     padding: 0 !important;
     margin: 0 !important;
     order: 1 !important;
+    box-shadow: none !important;
   }
 
   #mobileMenu a,
@@ -168,54 +180,56 @@ div.nav-links,
   .nav-links a:hover {
     background: rgba(255, 255, 255, 0.1) !important;
   }
+  
+  /* Make title full size on desktop */
+  header nav .font-bold {
+    white-space: nowrap !important;
+    font-size: 1.25rem !important;
+  }
 }
 
 /* ==============================================
-   MOBILE STYLES (≤900px)
+   MOBILE STYLES (≤1024px) - PHONES AND SMALL TABLETS
    ============================================== */
 
-@media (max-width: 900px) {
-  /* Show hamburger on mobile */
+@media (max-width: 1024px) {
+  /* Ensure hamburger is visible on mobile */
   #menuToggle,
   button#menuToggle,
   .hamburger,
   button.hamburger {
     display: inline-flex !important;
     visibility: visible !important;
+    opacity: 1 !important;
   }
 
-  /* Hide navigation links by default on mobile */
+  /* Ensure navigation links are hidden by default on mobile */
   #mobileMenu,
   .nav-links,
   div.nav-links,
-  #mobileMenu.nav-links {
+  #mobileMenu.nav-links,
+  header nav .nav-links,
+  header nav div.nav-links {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    background: #1f2937 !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-    padding: 1rem !important;
-    gap: 0.5rem !important;
-    z-index: 999 !important;
-    border-bottom-left-radius: 0.5rem !important;
-    border-bottom-right-radius: 0.5rem !important;
-    pointer-events: none !important;
   }
 
-  /* Show navigation links when menu is opened */
+  /* Show navigation links ONLY when menu is opened */
   #mobileMenu.open,
   #mobileMenu[data-open="true"],
   .nav-links.open,
   .nav-links[data-open="true"],
   div.nav-links.open,
-  div.nav-links[data-open="true"] {
+  div.nav-links[data-open="true"],
+  header nav .nav-links.open,
+  header nav .nav-links[data-open="true"] {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
     animation: slideDown 0.3s ease-out !important;
+    padding: 1rem !important;
   }
 
   #mobileMenu a,
@@ -237,12 +251,6 @@ div.nav-links,
   #mobileMenu a:active,
   .nav-links a:active {
     background: rgba(255, 255, 255, 0.15) !important;
-  }
-
-  /* Adjust title on mobile */
-  header nav .font-bold {
-    font-size: 1rem !important;
-    padding: 0 0.5rem !important;
   }
 }
 
