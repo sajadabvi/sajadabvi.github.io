@@ -1,23 +1,31 @@
 (function(){
   function initializeNavigationToggle(root){
     if(!root) return;
-    var toggle = root.querySelector('.nav-toggle');
-    var menu = root.querySelector('.nav-links');
+
+    var toggle = root.querySelector('[data-nav-toggle]') ||
+      root.querySelector('.nav-toggle') ||
+      root.querySelector('#menuToggle') ||
+      root.querySelector('.hamburger');
+
+    var menu = root.querySelector('[data-nav-menu]') ||
+      root.querySelector('.nav-links') ||
+      document.getElementById('mobileMenu');
+
     if(!toggle || !menu) return;
 
-    var closeMenu = function(){
-      toggle.setAttribute('aria-expanded','false');
-      menu.dataset.open = 'false';
+    var setMenuState = function(open){
+      var isOpen = Boolean(open);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menu.dataset.open = isOpen ? 'true' : 'false';
+      menu.classList.toggle('open', isOpen);
     };
 
-    var openMenu = function(){
-      toggle.setAttribute('aria-expanded','true');
-      menu.dataset.open = 'true';
-    };
+    var closeMenu = function(){ setMenuState(false); };
+    var openMenu = function(){ setMenuState(true); };
 
     toggle.addEventListener('click', function(){
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      if(expanded){
+      var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      if(isExpanded){
         closeMenu();
       } else {
         openMenu();
@@ -25,13 +33,11 @@
     });
 
     menu.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){
-        closeMenu();
-      });
+      link.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('click', function(event){
-      if(!menu.dataset.open || menu.dataset.open !== 'true') return;
+      if(!(menu.dataset.open === 'true' || menu.classList.contains('open'))) return;
       if(root.contains(event.target)) return;
       closeMenu();
     });
@@ -39,17 +45,24 @@
     document.addEventListener('keydown', function(event){
       if(event.key === 'Escape'){
         closeMenu();
+        if(typeof toggle.focus === 'function'){
+          toggle.focus();
+        }
       }
     });
 
-    closeMenu();
+    setMenuState(false);
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      initializeNavigationToggle(document.querySelector('header nav'));
+  var activateNavigation = function(){
+    document.querySelectorAll('header nav').forEach(function(nav){
+      initializeNavigationToggle(nav);
     });
+  };
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', activateNavigation);
   } else {
-    initializeNavigationToggle(document.querySelector('header nav'));
+    activateNavigation();
   }
 })();
