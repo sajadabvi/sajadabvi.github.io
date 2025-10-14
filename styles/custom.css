@@ -9,13 +9,13 @@ body{
 header nav{
   gap:1.5rem;
   flex-wrap:wrap;
+  position:relative;
 }
 header nav .nav-links{
-  display:flex;
+  display:none;  /* Hidden by default, shown on desktop or when opened on mobile */
   align-items:center;
   justify-content:space-between;
   flex-wrap:wrap;
-  align-items:center;
   gap:0.5rem 1rem;
 }
 
@@ -137,7 +137,7 @@ main.container .text-center p{
   line-height:1;
   padding:0.5rem 0.75rem;
   cursor:pointer;
-  display:none;           /* Hidden by default, shown on mobile */
+  display:inline-flex;    /* Visible by default (mobile-first) */
   align-items:center;
   justify-content:center;
   color:#fff;
@@ -191,7 +191,6 @@ main.container .text-center p{
 /* Mobile ≤900px: row header, collapsed links */
 @media (max-width:900px){
   .hamburger{
-    display:inline-flex !important;
     order:-1;             /* Show hamburger on the left */
   }
   
