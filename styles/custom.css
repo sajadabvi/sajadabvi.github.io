@@ -1,20 +1,18 @@
+/* Base */
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   color:#0f172a;
   background-color:#f8fafc;
   line-height:1.6;
 }
-header nav{
-  gap:1.5rem;
-}
+
+header nav{ gap:1.5rem; }
 header nav .nav-links{
   display:flex;
   flex-wrap:wrap;
   gap:0.5rem 1rem;
 }
-header nav .nav-links > *{
-  margin:0 !important;
-}
+header nav .nav-links > *{ margin:0 !important; }
 header nav .nav-links a{
   display:inline-flex;
   align-items:center;
@@ -27,41 +25,52 @@ header nav .nav-links a:focus{
   background-color:rgba(255,255,255,0.12);
   color:#e2e8f0;
 }
-main.container{
-  max-width:60rem;
-}
-main.container > div{
-  margin-left:auto;
-  margin-right:auto;
-}
+
+main.container{ max-width:60rem; }
+main.container > div{ margin-left:auto; margin-right:auto; }
 main.container .text-center p{
   max-width:55ch;
   margin-left:auto;
   margin-right:auto;
 }
-@media (max-width: 900px){
-  header nav{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  header nav .nav-links{
-    width:100%;
-    justify-content:flex-start;
-  }
-}
+
+/* Small tweaks */
 @media (max-width:600px){
   header nav .nav-links a{
     font-size:0.95rem;
     padding:0.3rem 0.7rem;
   }
 }
-.hamburger{background:transparent;border:none;font-size:1.5rem;line-height:1;padding:.25rem .5rem;cursor:pointer}
-@media (min-width:901px){
-  .hamburger{display:none}
-  header nav .nav-links{display:flex !important;flex-direction:row}
+
+/* Mobile menu */
+.hamburger{
+  background:transparent;
+  border:none;
+  font-size:1.5rem;
+  line-height:1;
+  padding:.25rem .5rem;
+  cursor:pointer;
+  display:inline-flex;           /* ensure visible */
+  align-items:center;
+  color:#fff;                    /* visible on dark header */
+  z-index:50;
 }
+
+/* Desktop ≥901px: show links, hide hamburger */
+@media (min-width:901px){
+  .hamburger{ display:none; }
+  header nav .nav-links{ display:flex !important; flex-direction:row; }
+}
+
+/* Mobile ≤900px: row header, collapsed links */
 @media (max-width:900px){
-  header nav{flex-direction:row;align-items:center}
-  header nav .nav-links{display:none;flex-direction:column;width:100%;gap:.5rem;margin-top:.5rem}
-  header nav .nav-links.open{display:flex}
+  header nav{ flex-direction:row; align-items:center; justify-content:space-between; }
+  header nav .nav-links{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    gap:.5rem;
+    margin-top:.5rem;
+  }
+  header nav .nav-links.open{ display:flex; }
 }
