@@ -160,10 +160,10 @@ nav {
 }
 
 /* ==============================================
-   DESKTOP STYLES (min-width: 768px)
+   DESKTOP STYLES (min-width: 900px)
    ============================================== */
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   nav {
     padding: 1rem 2rem;
   }

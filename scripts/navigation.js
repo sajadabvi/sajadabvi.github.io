@@ -60,7 +60,7 @@
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function() {
-        if (window.innerWidth >= 768 && navLinks.classList.contains('open')) {
+        if (window.innerWidth >= 900 && navLinks.classList.contains('open')) {
           closeMenu();
         }
       }, 250);
