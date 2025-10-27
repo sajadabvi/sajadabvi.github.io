@@ -10,42 +10,114 @@
         .project-card {
             background: white;
             border-radius: 0.5rem;
-            padding: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: box-shadow 0.3s ease;
+            overflow: hidden;
         }
         .project-card:hover {
             box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .project-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+        .project-header:hover {
+            background: #f8fafc;
         }
         .project-title {
             font-size: 1.25rem;
             font-weight: 600;
             color: #1e293b;
-            margin-bottom: 1rem;
+            margin: 0;
+            flex: 1;
+            padding-right: 1rem;
+        }
+        .project-toggle {
+            font-size: 1.5rem;
+            color: #3b82f6;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .project-card.expanded .project-toggle {
+            transform: rotate(180deg);
+        }
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+        .project-card.expanded .project-content {
+            max-height: 5000px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
         }
         .project-description {
             color: #475569;
             line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .project-description p {
             margin-bottom: 1rem;
+        }
+        .project-figures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        /* Better layout for 3 figures - force 3 columns on wide screens */
+        @media (min-width: 900px) {
+            .project-figures:has(> :nth-child(3):last-child) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Better layout for 4 figures - 2x2 grid */
+        @media (min-width: 768px) {
+            .project-figures:has(> :nth-child(4):last-child) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1100px) {
+            .project-figures:has(> :nth-child(4):last-child) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .figure-container {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .figure-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.375rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .figure-caption {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+            line-height: 1.5;
         }
         .project-links {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        .project-link {
-            background: #3b82f6;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.2s ease;
-        }
-        .project-link:hover {
-            background: #2563eb;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
         }
         .section-title {
             font-size: 1.75rem;
@@ -55,6 +127,11 @@
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 3px solid #3b82f6;
+        }
+        @media (max-width: 640px) {
+            .project-figures {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -89,118 +166,257 @@
     <main id="main">
         <div class="content-section">
             <h1>Projects & Portfolio</h1>
-            <p style="color: #64748b; margin-bottom: 2rem;">Explore my research and technical projects showcasing innovations in machine learning, causal inference, and computer vision.</p>
+            <p style="color: #64748b; margin-bottom: 2rem;">Explore my research and technical projects showcasing innovations in machine learning, causal inference, and computer vision. Click on any project to expand and view details.</p>
 
             <h2 class="section-title">Research Projects</h2>
 
+            <!-- GRACE-C Project -->
             <div class="project-card">
-                <h3 class="project-title">GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</h3>
-                <div class="project-description">
-                    <p>Discover GRACE-C, a breakthrough method that redefines causal discovery in undersampled time series data. By bridging the gap between the true causal timescale and slower measurement rates, GRACE-C uncovers hidden dynamics in complex systems—be it brain networks or economic models.</p>
-                    <p>Harnessing advanced constraint programming and cutting‐edge theoretical insights, GRACE-C delivers up to three orders of magnitude speed improvement over previous methods. It scales effortlessly to graphs with over 100 nodes and robustly handles noisy, real-world data.</p>
+                <div class="project-header">
+                    <h3 class="project-title">GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://openreview.net/forum?id=B_pCIsX8KL_" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Discover GRACE-C, a breakthrough method that redefines causal discovery in undersampled time series data. By bridging the gap between the true causal timescale and slower measurement rates, GRACE-C uncovers hidden dynamics in complex systems—be it brain networks or economic models.</p>
+                        <p>Harnessing advanced constraint programming and cutting‐edge theoretical insights, GRACE-C delivers up to three orders of magnitude speed improvement over previous methods. It scales effortlessly to graphs with over 100 nodes and robustly handles noisy, real-world data.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/gracec1.jpeg" alt="GRACE-C Causal Graph Overview">
+                            <p class="figure-caption">Visualizing GRACE-C's intricate causal graph structures.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/gracec2.jpeg" alt="Speed Comparison">
+                            <p class="figure-caption">Performance comparison showing GRACE-C's dramatic speed improvements.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/gracec3.jpeg" alt="Performance Benchmark">
+                            <p class="figure-caption">Benchmark analysis of GRACE-C's computational efficiency.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://openreview.net/forum?id=B_pCIsX8KL_" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Causal Learning through Deliberate Undersampling -->
             <div class="project-card">
-                <h3 class="project-title">Causal Learning through Deliberate Undersampling</h3>
-                <div class="project-description">
-                    <p>What if measuring data <strong>less frequently</strong> actually gave you <strong>more information</strong> about causality? This paper presents a groundbreaking idea that challenges the common belief that higher measurement rates are always better. Instead, by strategically undersampling, we can reduce ambiguity and gain a sharper understanding of causal relationships!</p>
-                    <p><strong>Key Results:</strong> Hidden insights unlocked through slower measurements, reduced equivalence classes, and non-monotonic effects where adding a slower dataset can increase accuracy more than adding a faster dataset.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Causal Learning through Deliberate Undersampling</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://proceedings.mlr.press/v213/solovyeva23a.html" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>What if measuring data <strong>less frequently</strong> actually gave you <strong>more information</strong> about causality? This paper presents a groundbreaking idea that challenges the common belief that higher measurement rates are always better. Instead, by strategically undersampling, we can reduce ambiguity and gain a sharper understanding of causal relationships!</p>
+                        <p><strong>Key Results:</strong> Hidden insights unlocked through slower measurements, reduced equivalence classes, and non-monotonic effects where adding a slower dataset can increase accuracy more than adding a faster dataset.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/clearr_figure1.jpeg" alt="Equivalence Class Reduction">
+                            <p class="figure-caption">Venn diagrams showing how undersampling affects equivalence class relationships.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/clearr_figure2.jpeg" alt="Graph Properties Histogram">
+                            <p class="figure-caption">Density estimation showing how graph structures change with different undersampling rates.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/clearr_figure3.jpeg" alt="Undersampling Impact Analysis">
+                            <p class="figure-caption">Analysis of undersampling impact on causal structure identification.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/clearr_figure4.jpeg" alt="Performance Metrics">
+                            <p class="figure-caption">Quantifying the gain from deliberate undersampling across different scenarios.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://proceedings.mlr.press/v213/solovyeva23a.html" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Greedy AutoAugment -->
             <div class="project-card">
-                <h3 class="project-title">Greedy AutoAugment</h3>
-                <div class="project-description">
-                    <p>Greedy AutoAugment redefines image data augmentation by employing a highly efficient greedy search strategy to discover optimal augmentation policies. This dynamic method efficiently selects and combines augmentation operations to boost neural network performance on image classification tasks.</p>
-                    <p>Achieves comparable or higher accuracies on challenging datasets such as Tiny ImageNet, CIFAR-10, CIFAR-100, and SVHN while using up to 360 times fewer computational resources.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Greedy AutoAugment</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://www.sciencedirect.com/science/article/pii/S0167865520303305" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/sajadabvi/greedy_auto_augment" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Greedy AutoAugment redefines image data augmentation by employing a highly efficient greedy search strategy to discover optimal augmentation policies. This dynamic method efficiently selects and combines augmentation operations to boost neural network performance on image classification tasks.</p>
+                        <p>Achieves comparable or higher accuracies on challenging datasets such as Tiny ImageNet, CIFAR-10, CIFAR-100, and SVHN while using up to 360 times fewer computational resources.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/autoaugment_fig1.jpeg" alt="AutoAugment Search Strategy">
+                            <p class="figure-caption">Greedy search strategy for discovering optimal augmentation policies.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/autoaugment_fig2.png" alt="AutoAugment Algorithm Scheme">
+                            <p class="figure-caption">The general scheme of the AutoAugment algorithm showing the search and training process.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0167865520303305" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/sajadabvi/greedy_auto_augment" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- DECAPS COVID-19 Detection -->
             <div class="project-card">
-                <h3 class="project-title">Radiologist-Level COVID-19 Detection Using CT Scans with DECAPS</h3>
-                <div class="project-description">
-                    <p>Experience a breakthrough in automated COVID-19 diagnosis with the DECAPS architecture—a novel, detail-oriented capsule network designed to emulate the nuanced diagnostic process of expert radiologists. DECAPS combines capsule networks with Inverted Dynamic Routing and the Peekaboo training strategy to focus on critical regions within CT scans.</p>
-                    <p>Achieves superior accuracy and sensitivity even with limited training data through conditional GAN-based data augmentation.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Radiologist-Level COVID-19 Detection Using CT Scans with DECAPS</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://arxiv.org/abs/2004.07407" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/amobiny/DECAPS_for_COVID19" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Experience a breakthrough in automated COVID-19 diagnosis with the DECAPS architecture—a novel, detail-oriented capsule network designed to emulate the nuanced diagnostic process of expert radiologists. DECAPS combines capsule networks with Inverted Dynamic Routing and the Peekaboo training strategy to focus on critical regions within CT scans.</p>
+                        <p>Achieves superior accuracy and sensitivity even with limited training data through conditional GAN-based data augmentation.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/decaps_fig1.jpeg" alt="DECAPS Architecture">
+                            <p class="figure-caption">DECAPS architecture with head activation maps for COVID-19 detection.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/decaps_fig2.png" alt="Performance Results">
+                            <p class="figure-caption">Diagnostic performance metrics showing radiologist-level accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://arxiv.org/abs/2004.07407" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/amobiny/DECAPS_for_COVID19" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Piecing Together the Causal Puzzle -->
             <div class="project-card">
-                <h3 class="project-title">Piecing Together the Causal Puzzle</h3>
-                <div class="project-description">
-                    <p>"Piecing Together the Causal Puzzle" confronts one of neuroimaging's toughest challenges—recovering the true causal structure from undersampled, noisy time series data. This work innovates by leveraging Answer Set Programming (ASP) to rigorously explore and prune the space of potential causal graphs.</p>
-                    <p>Demonstrates robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Piecing Together the Causal Puzzle</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="/papers/Highway_to_Causality__Rock_n__RASL_Tunes_Up_Noisy_Data_with_Answer_Set_Programming.pdf" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>"Piecing Together the Causal Puzzle" confronts one of neuroimaging's toughest challenges—recovering the true causal structure from undersampled, noisy time series data. This work innovates by leveraging Answer Set Programming (ASP) to rigorously explore and prune the space of potential causal graphs.</p>
+                        <p>Demonstrates robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/causal_puzzle_fig1.jpeg" alt="Solution Set Analysis">
+                            <p class="figure-caption">Optimization solution set size and commission error across different undersamplings.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/causal_puzzle_fig2.png" alt="Causal Graph Recovery">
+                            <p class="figure-caption">ASP-based causal graph recovery from undersampled noisy data.</p>
+                        </div>
+                        <div class="figure-container">
+                            <img src="/images/causal_puzzle_fig3.jpeg" alt="BOLD Signal Preservation">
+                            <p class="figure-caption">Impact of undersampling rates on BOLD signal preservation in fMRI data.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="/papers/Highway_to_Causality__Rock_n__RASL_Tunes_Up_Noisy_Data_with_Answer_Set_Programming.pdf" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
+            <!-- ION-C -->
             <div class="project-card">
-                <h3 class="project-title">ION-C: Integration of Overlapping Networks via Constraints</h3>
-                <div class="project-description">
-                    <p>ION-C offers a powerful and efficient solution to integrating information from multiple datasets that share only a subset of variables. By formulating the problem using Answer Set Programming (ASP), ION-C skillfully merges local causal graphs derived from overlapping datasets into a complete, globally consistent causal model.</p>
-                    <p>Ideal for applications ranging from social survey analysis to complex biomedical data, where variables are often measured across disjoint datasets.</p>
+                <div class="project-header">
+                    <h3 class="project-title">ION-C: Integration of Overlapping Networks via Constraints</h3>
+                    <span class="project-toggle">▼</span>
                 </div>
-                <div class="project-links">
-                    <a href="https://arxiv.org/abs/2411.04243" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
-                    <a href="https://github.com/neuroneural/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>ION-C offers a powerful and efficient solution to integrating information from multiple datasets that share only a subset of variables. By formulating the problem using Answer Set Programming (ASP), ION-C skillfully merges local causal graphs derived from overlapping datasets into a complete, globally consistent causal model.</p>
+                        <p>Ideal for applications ranging from social survey analysis to complex biomedical data, where variables are often measured across disjoint datasets.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/ionc_fig4.jpeg" alt="ION Solution Set">
+                            <p class="figure-caption">Representation of ION solution set showing network integration.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://arxiv.org/abs/2411.04243" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://github.com/neuroneural/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
                 </div>
             </div>
 
             <h2 class="section-title">Technical Projects</h2>
 
+            <!-- LLM & Knowledge Graphs -->
             <div class="project-card">
-                <h3 class="project-title">Large Language Models & Knowledge Graphs</h3>
-                <div class="project-description">
-                    <p>Worked on integrating Llama 3 with knowledge graphs to improve logical reasoning and problem-solving in AI models.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Large Language Models & Knowledge Graphs</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Worked on integrating Llama 3 with knowledge graphs to improve logical reasoning and problem-solving in AI models. This project explores how structured knowledge can enhance the reasoning capabilities of large language models for complex problem-solving tasks.</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- GANs for Self-Driving Cars -->
             <div class="project-card">
-                <h3 class="project-title">Generative Adversarial Networks (GANs) for Self-Driving Cars</h3>
-                <div class="project-description">
-                    <p>Trained GANs to augment and improve the classification of street signs under diverse weather conditions using multimodal inputs (image & text).</p>
+                <div class="project-header">
+                    <h3 class="project-title">Generative Adversarial Networks (GANs) for Self-Driving Cars</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Trained GANs to augment and improve the classification of street signs under diverse weather conditions using multimodal inputs (image & text). This approach enhances the robustness of autonomous vehicle perception systems.</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Topology-Aware SSL -->
             <div class="project-card">
-                <h3 class="project-title">Topology-Aware Self-Supervised Learning</h3>
-                <div class="project-description">
-                    <p>Developed a contrastive learning framework with a topology loss term to reduce texture bias in CNNs, improving generalization in vision tasks.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Topology-Aware Self-Supervised Learning</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Developed a contrastive learning framework with a topology loss term to reduce texture bias in CNNs, improving generalization in vision tasks. This method encourages networks to learn more robust shape-based representations.</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Dynamical Systems -->
             <div class="project-card">
-                <h3 class="project-title">Dynamical System Prediction with Neural Networks</h3>
-                <div class="project-description">
-                    <p>Built neural networks (PhICNet) to predict physical systems governed by PDEs, integrating multimodal physics and image data for enhanced spatio-temporal forecasting.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Dynamical System Prediction with Neural Networks</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Built neural networks (PhICNet) to predict physical systems governed by PDEs, integrating multimodal physics and image data for enhanced spatio-temporal forecasting. This approach combines physics-informed learning with computer vision.</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Eye Gaze Tracking -->
             <div class="project-card">
-                <h3 class="project-title">Eye Gaze Tracking Device</h3>
-                <div class="project-description">
-                    <p>Designed an eye-tracking device from scratch using C#.NET, OpenCV, Emgu, and AForge libraries. Achieved high-accuracy gaze detection for real-time applications.</p>
+                <div class="project-header">
+                    <h3 class="project-title">Eye Gaze Tracking Device</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Designed an eye-tracking device from scratch using C#.NET, OpenCV, Emgu, and AForge libraries. Achieved high-accuracy gaze detection for real-time applications including assistive technology and human-computer interaction.</p>
+                    </div>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -208,6 +424,38 @@
         <p>&copy; 2025 Mohammadsajad Abavisani. All rights reserved.</p>
     </footer>
 
-    <script src="/scripts/navigation.js" defer></script>
+    <script src="/scripts/navigation.js?v=2.1" defer></script>
+    <script>
+        // Project expand/collapse functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(function(card) {
+                const header = card.querySelector('.project-header');
+                
+                header.addEventListener('click', function() {
+                    // Toggle the expanded class
+                    card.classList.toggle('expanded');
+                    
+                    // Update ARIA attributes for accessibility
+                    const isExpanded = card.classList.contains('expanded');
+                    header.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Initialize ARIA attributes
+                header.setAttribute('role', 'button');
+                header.setAttribute('aria-expanded', 'false');
+                header.setAttribute('tabindex', '0');
+                
+                // Add keyboard support
+                header.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        header.click();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -58,6 +58,25 @@
         <p>&copy; 2025 Mohammadsajad Abavisani. All rights reserved.</p>
     </footer>
 
-    <script src="/scripts/navigation.js" defer></script>
+    <script src="/scripts/navigation.js?v=2.1" defer></script>
+    <script>
+        // Debug script for photography page
+        window.addEventListener('load', function() {
+            console.log('Photography page loaded');
+            
+            const images = document.querySelectorAll('main img');
+            console.log('Found ' + images.length + ' images on photography page');
+            
+            images.forEach(function(img, index) {
+                console.log('Image ' + index + ':', img.src);
+                console.log('  - Has click listener:', img.onclick !== null);
+                console.log('  - Cursor style:', window.getComputedStyle(img).cursor);
+            });
+            
+            // Check if lightbox exists
+            const lightbox = document.getElementById('imageLightbox');
+            console.log('Lightbox element exists:', lightbox !== null);
+        });
+    </script>
 </body>
 </html>
