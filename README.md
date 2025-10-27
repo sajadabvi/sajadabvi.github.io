@@ -1,15 +1,65 @@
 # sajadabvi.github.io
 
-## Verifying the mobile navigation menu
+Personal website for Mohammadsajad Abavisani - Final-year PhD Candidate in Electrical & Computer Engineering.
 
-1. **Start a local static server** from the project root so the exported Next.js assets load correctly:
+## Features
+
+- **Responsive Design**: Mobile-first approach with collapsible hamburger menu on mobile devices
+- **Desktop Navigation**: Horizontal tab navigation on desktop screens (≥768px)
+- **Modern UI**: Clean, professional design with smooth animations
+- **Accessibility**: ARIA labels, keyboard navigation, and skip-to-content links
+- **Fast Loading**: Optimized CSS and JavaScript for quick page loads
+
+## Testing Locally
+
+To test the website locally:
+
+1. **Start a local static server** from the project root:
    ```bash
    python3 -m http.server 8000
    ```
-2. **Open the site** at [http://localhost:8000](http://localhost:8000) in your browser.
-3. **Use your browser's device toolbar** (e.g., Chrome DevTools → Toggle device toolbar) to emulate a screen that is 900px wide or smaller. At that width the hamburger button becomes visible because the stylesheet hides `.nav-links` unless the JavaScript controller expands them.【F:styles/custom.css†L54-L95】
-4. **Click the hamburger button** that appears at the top-right. The script injects this button on load and toggles the `data-open` state so the links slide open vertically.【F:scripts/navigation.js†L25-L123】
-5. **Select any navigation link.** The menu should collapse automatically after navigation, thanks to the event listeners that close the panel on link clicks, outside clicks, or pressing Escape.【F:scripts/navigation.js†L101-L152】
-6. **Stop the server** with `Ctrl+C` when you are finished.
 
-If you are verifying the live GitHub Pages deployment, open the site on a phone (or in your desktop browser's mobile simulation) and repeat steps 3–5. The hamburger should appear on small screens, expand to show the links, and close itself after you make a selection.
+2. **Open the site** at [http://localhost:8000](http://localhost:8000) in your browser.
+
+3. **Test mobile view**:
+   - Open Chrome DevTools (F12)
+   - Click the device toolbar button (or press `Ctrl+Shift+M` / `Cmd+Shift+M`)
+   - Select a mobile device or resize to < 768px width
+   - The hamburger menu should appear and work smoothly
+
+4. **Test desktop view**:
+   - Resize the browser window to ≥ 768px width
+   - The hamburger menu should disappear
+   - Navigation links should appear horizontally in the header
+
+5. **Stop the server** with `Ctrl+C` when finished.
+
+## Structure
+
+- `/styles/custom.css` - All CSS styling with mobile-first approach
+- `/scripts/navigation.js` - Navigation functionality (hamburger menu toggle)
+- `/index.html` - Homepage
+- `/research/` - Research & publications
+- `/projects/` - Project portfolio
+- `/resume/` - CV and resume
+- `/skills/` - Technical skills
+- `/blog/` - Blog posts
+- `/contact/` - Contact information
+- `/media/` - Media appearances and talks
+- `/photography/` - Photography portfolio
+- `/teaching/` - Teaching and mentorship
+
+## Deployment
+
+This site is deployed on GitHub Pages. Any commits to the `main` branch will automatically update the live site.
+
+## Browser Compatibility
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## License
+
+© 2025 Mohammadsajad Abavisani. All rights reserved.
