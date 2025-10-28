@@ -235,10 +235,7 @@
                         <p>This research provides a new, low-cost path for improving causal discovery and shows that historical, slower-timescale data can be reused to gain new insights.</p>
                     </div>
                     <div class="project-figures">
-                        <div class="figure-container">
-                            <img src="/images/clearr_figure1.png" alt="Equivalence Class Reduction">
-                            <p class="figure-caption">This figure demonstrates how adding a slower measurement can paradoxically reduce uncertainty about a system's true causal structure. Panel (A) shows a single, "true" causal graph (G<sup>1</sup>) on the far left. The subsequent graphs (G<sup>2</sup> through G<sup>6</sup>) show the "illusory" and increasingly complex structures that are observed when measuring that same system at progressively slower rates. Black arrows represent causal links, while orange arrows represent correlations. Panel (B) shows the "equivalence class" for G<sup>4</sup>. If a scientist only observed G<sup>4</sup>, they wouldn't know the true structure; it could be any of these 11 possible graphs. Panel (C) shows the "joint equivalence class" for G<sup>4</sup> and G<sup>5</sup>. By using information from both the G<sup>4</sup> measurement and the even slower G<sup>5</sup> measurement, we can eliminate solutions that aren't compatible with both. The key result is the reduction in ambiguity: the set of possible true graphs drops from 11 (in B) to just 3 (in C). This demonstrates a clear information "gain" from deliberately adding a slower measurement.</p>
-                        </div>
+                       
                         <div class="figure-container">
                             <img src="/images/clearr_figure2_v1.svg" alt="Graph Properties Histogram">
                             <p class="figure-caption">This figure illustrates why adding a slower measurement can be beneficial. (a) Monotonic Undersampling: This shows the standard intuition. The set of possible "true" graphs for a fast measurement (G<sup>5</sup>, orange) is fully contained within the set for a slower measurement (G<sup>6</sup>, blue). Combining them gives no new information. (b) Non-Monotonic Undersampling: This is the paper's key finding. The set of possible graphs for the fast measurement (H<sup>5</sup>, orange) and the slow measurement (H<sup>6</sup>, blue) only partially overlap. By finding the graphs that are consistent with both (the green intersection), we get a smaller, more refined set of solutions than either measurement could provide alone.</p>
@@ -267,8 +264,27 @@
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>Greedy AutoAugment redefines image data augmentation by employing a highly efficient greedy search strategy to discover optimal augmentation policies. This dynamic method efficiently selects and combines augmentation operations to boost neural network performance on image classification tasks.</p>
-                        <p>Achieves comparable or higher accuracies on challenging datasets such as Tiny ImageNet, CIFAR-10, CIFAR-100, and SVHN while using up to 360 times fewer computational resources.</p>
+                        <p><strong>Greedy AutoAugment: Efficient Data Augmentation Search</strong></p>
+                        
+                        <p>This project tackles a major bottleneck in modern deep learning: the extreme computational cost of finding optimal data augmentation policies. While AutoAugment proved that learning policies from data leads to state-of-the-art results, its reliance on a complex Reinforcement Learning (RL) controller to search an exponential search space makes it impractically expensive. This forces most researchers to re-use pre-trained policies on new datasets, which, as this paper shows, can actually hurt performance.</p>
+                        
+                        <p>Our <strong>Greedy AutoAugment (GAutoAugment)</strong> is an innovative solution that replaces this "black-box" RL approach with a highly efficient, transparent, and more effective search algorithm. This work demonstrates deep skills in algorithmic design, computational optimization, and complexity analysis.</p>
+                        
+                        <p><strong>Innovation and Mathematical Rigor</strong></p>
+                        <p>The core innovation is a greedy, layer-by-layer search that transforms the problem's complexity.</p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Algorithmic Redesign:</strong> We replaced the slow RL controller with a Greedy Breadth-First Search. The algorithm iteratively builds policies, starting with a single augmentation (layer 1) and evaluating all combinations. It then greedily selects the best-performing policy from that layer to serve as the base for the next layer of the search.</li>
+                            <li><strong>Search Space Transformation:</strong> The key mathematical insight was to decouple the search variables. Instead of searching for (technique, probability, and magnitude) simultaneously, we fixed the probability to 1 during the search. This single design choice, combined with the greedy search, fundamentally changed the computational complexity from an exponential growth (O(N<sup>l</sup>)) to a linear growth (O(N×k)).</li>
+                            <li><strong>Statistical Re-weighting:</strong> After the highly efficient search identifies the best policies, we re-introduce probabilities in a statistically sound manner. We use a Pareto distribution to assign higher selection probabilities to the policies that achieved higher accuracy during the search. This ensures that better policies are used more often during the final model training.</li>
+                        </ul>
+                        
+                        <p><strong>Key Results</strong></p>
+                        <p>This algorithmic and mathematical rigor directly translated into superior performance.</p>
+                        <ul style="margin-left: 2rem;">
+                            <li><strong>Massive Efficiency:</strong> GAutoAugment finds better policies while using 360 times fewer computational resources than the original AutoAugment.</li>
+                            <li><strong>Superior Accuracy:</strong> By being efficient enough to find dataset-specific policies, GAutoAugment consistently improved accuracy across four datasets (Tiny ImageNet, CIFAR-10, CIFAR-100, and SVHN) and 11 different neural network architectures.</li>
+                            <li><strong>Solved Transferability:</strong> We demonstrated that transferring policies is sub-optimal. The "one-size-fits-all" AutoAugment policy decreased accuracy on Tiny ImageNet by 52% compared to manual augmentation, while our dataset-specific search increased accuracy by 25%.</li>
+                        </ul>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
