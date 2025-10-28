@@ -293,7 +293,7 @@
                         </div>
                         <div class="figure-container">
                             <img src="/images/autoaugment_fig2.png" alt="AutoAugment Algorithm Scheme">
-                            <p class="figure-caption">The general scheme of the AutoAugment algorithm showing the search and training process.</p>
+                            <p class="figure-caption">Results and benchmarking againt state-of-the-art methods.</p>
                         </div>
                     </div>
                     <div class="project-links">
@@ -311,8 +311,24 @@
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>Experience a breakthrough in automated COVID-19 diagnosis with the DECAPS architecture—a novel, detail-oriented capsule network designed to emulate the nuanced diagnostic process of expert radiologists. DECAPS combines capsule networks with Inverted Dynamic Routing and the Peekaboo training strategy to focus on critical regions within CT scans.</p>
-                        <p>Achieves superior accuracy and sensitivity even with limited training data through conditional GAN-based data augmentation.</p>
+                        <p>During the COVID-19 pandemic, healthcare systems faced two critical bottlenecks: a shortage of diagnostic tests and a shortage of expert radiologists to interpret CT scans. This project tackled both problems by developing a novel deep learning architecture, <strong>DECAPS (Detail-Oriented Capsule Networks)</strong>, designed to automate COVID-19 diagnosis from CT scans with superhuman accuracy, even when trained on scarce data.</p>
+                        
+                        <p>This work demonstrates advanced skills in algorithmic design, generative modeling, and deep learning theory. Our innovations were:</p>
+                        
+                        <p><strong>Novel Architecture (DECAPS):</strong> We didn't just use a standard CNN. We built our solution on Capsule Networks to better model the part-whole spatial relationships in a CT scan. We fundamentally improved the architecture by introducing:</p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Inverted Dynamic Routing (IDR):</strong> A new, top-down routing mechanism that forces lower-level capsules to compete for the attention of higher-level ones. This rigorously-designed algorithm proved more stable and was crucial for filtering out noise from non-descriptive regions of the lung.</li>
+                            <li><strong>"Peekaboo" Training:</strong> A novel, self-guided training procedure. The model uses its own activation maps to identify a region of interest (ROI). It then crops the ROI to force the network to learn fine-grained details, and drops (removes) the ROI to force the network to find all relevant disease features, not just the most obvious one.</li>
+                            <li><strong>Generative Data Augmentation:</strong> To solve the critical "data scarcity" problem, we employed conditional Generative Adversarial Networks (cGANs). We used a pix2pix model to learn the distribution of COVID-19 features and generate hundreds of realistic, synthetic CT scan "deep fakes," which were vetted by our collaborating radiologists.</li>
+                        </ul>
+                        
+                        <p><strong>Key Results</strong></p>
+                        <p>Our approach was a resounding success, demonstrating a clear path to augmenting clinical experts.</p>
+                        <ul style="margin-left: 2rem;">
+                            <li><strong>State-of-the-Art Performance:</strong> The final DECAPS model achieved 96.1% AUC, significantly outperforming standard, powerful architectures like ResNet50, Inception-v3, and DenseNet121.</li>
+                            <li><strong>Superhuman Accuracy:</strong> The model was benchmarked against three experienced, well-trained thoracic radiologists. On a high-quality, curated test set, DECAPS significantly outperformed all three human experts, achieving 98% AUC.</li>
+                            <li><strong>Interpretable & Collaborative:</strong> The model generates Head Activation Maps (HAMs) to visualize exactly what regions it used to make its diagnosis. The clinical utility was so high that in one case, a radiologist revised their initial diagnosis after seeing the features our AI had highlighted.</li>
+                        </ul>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
