@@ -1,6 +1,6 @@
 # sajadabvi.github.io
 
-Personal website for Mohammadsajad Abavisani - Final-year PhD Candidate in Electrical & Computer Engineering.
+Personal website for Sajad Abavisani - Final-year PhD Candidate in Electrical & Computer Engineering.
 
 ## Features
 
@@ -62,4 +62,4 @@ This site is deployed on GitHub Pages. Any commits to the `main` branch will aut
 
 ## License
 
-© 2025 Mohammadsajad Abavisani. All rights reserved.
+© 2025 Sajad Abavisani. All rights reserved.
