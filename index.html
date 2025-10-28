@@ -6,6 +6,117 @@
     <meta name="description" content="Sajad Abavisani - Final-year PhD Candidate in Electrical & Computer Engineering">
     <title>Sajad Abavisani - Home</title>
     <link rel="stylesheet" href="/styles/custom.css">
+    <style>
+        .section-divider {
+            margin: 3rem 0;
+            padding: 2rem 0;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 0.5rem;
+        }
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0;
+        }
+        .view-more-link {
+            font-size: 0.95rem;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .view-more-link:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .highlight-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .highlight-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .highlight-content {
+            padding: 1.5rem;
+        }
+        .highlight-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+        .highlight-description {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .highlight-link {
+            display: inline-block;
+            color: #3b82f6;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .highlight-link:hover {
+            text-decoration: underline;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .skill-category {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+        .skill-list {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -42,6 +153,100 @@
             <p class="subtitle">Final-year PhD Candidate in Electrical & Computer Engineering</p>
             <p>With seven years of experience in machine learning, causal inference, and time series analysis, I am actively seeking internship opportunities for Summer 2025 and full-time positions for Fall/Winter 2025.</p>
             <p><strong>Specializing in causal learning, deep learning, and advanced time series analysis.</strong></p>
+        </div>
+
+        <!-- Research Highlights Section -->
+        <div class="section-divider">
+            <div class="section-header">
+                <h2>Featured Research</h2>
+                <a href="/research/" class="view-more-link">View All Publications →</a>
+            </div>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <img src="/images/gracec1.jpeg" alt="GRACE-C Research" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">GRACE-C: Generalized Rate Agnostic Causal Estimation</h3>
+                        <p class="highlight-description">A breakthrough method for causal discovery in undersampled time series data, achieving up to 3 orders of magnitude speed improvement. Presented at ICLR 2023 (Oral, Top 25%).</p>
+                        <a href="/projects/" class="highlight-link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/images/clearr_figure1.jpeg" alt="Causal Learning Research" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Causal Learning through Deliberate Undersampling</h3>
+                        <p class="highlight-description">Groundbreaking work showing that measuring data less frequently can actually provide more information about causality by reducing ambiguity in causal relationships.</p>
+                        <a href="/projects/" class="highlight-link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/images/decaps_fig1.jpeg" alt="COVID-19 Detection" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Radiologist-Level COVID-19 Detection</h3>
+                        <p class="highlight-description">Novel DECAPS architecture using detail-oriented capsule networks for automated COVID-19 diagnosis from CT scans, achieving radiologist-level accuracy.</p>
+                        <a href="/projects/" class="highlight-link">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Highlights Section -->
+        <div class="section-divider">
+            <div class="section-header">
+                <h2>Technical Projects</h2>
+                <a href="/projects/" class="view-more-link">View All Projects →</a>
+            </div>
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <img src="/images/autoaugment_fig1.jpeg" alt="AutoAugment Project" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Greedy AutoAugment</h3>
+                        <p class="highlight-description">Efficient image data augmentation using greedy search strategy, achieving comparable accuracy on CIFAR-10, CIFAR-100, and SVHN while using 360x fewer computational resources.</p>
+                        <a href="/projects/" class="highlight-link">View Details →</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/images/ionc_fig4.jpeg" alt="ION-C Project" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">ION-C: Integration of Overlapping Networks</h3>
+                        <p class="highlight-description">Computationally efficient algorithm that builds unified causal models from separate, partially overlapping datasets, scaling to graphs with up to 25 nodes with 99.55% accuracy.</p>
+                        <a href="/projects/" class="highlight-link">View Details →</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/images/causal_puzzle_fig2.png" alt="Causal Puzzle Project" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Piecing Together the Causal Puzzle</h3>
+                        <p class="highlight-description">Answer Set Programming approach to recover true causal structure from undersampled, noisy neuroimaging time series data with robust fMRI performance.</p>
+                        <a href="/projects/" class="highlight-link">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section-divider">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <a href="/skills/" class="view-more-link">View Full Tech Stack →</a>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p class="skill-list">Python, C++, Matlab, JAVA, Clingo, R</p>
+                </div>
+                <div class="skill-category">
+                    <h3>ML Frameworks & Libraries</h3>
+                    <p class="skill-list">TensorFlow, PyTorch (CUDA), Scikit-learn, NetworkX, igraph, OpenCV</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Machine Learning & AI</h3>
+                    <p class="skill-list">Multimodal LLMs, Transformers, Conformers, Predictive & Statistical Modeling, Optimization</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Other Technologies</h3>
+                    <p class="skill-list">Docker, Git, Parallel Computing, Scalable Solutions, Answer Set Programming</p>
+                </div>
+            </div>
         </div>
     </main>
 
