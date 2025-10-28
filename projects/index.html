@@ -174,8 +174,23 @@
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>Discover GRACE-C, a breakthrough method that redefines causal discovery in undersampled time series data. By bridging the gap between the true causal timescale and slower measurement rates, GRACE-C uncovers hidden dynamics in complex systems—be it brain networks or economic models.</p>
-                        <p>Harnessing advanced constraint programming and cutting‐edge theoretical insights, GRACE-C delivers up to three orders of magnitude speed improvement over previous methods. It scales effortlessly to graphs with over 100 nodes and robustly handles noisy, real-world data.</p>
+                        <p>This project tackles a critical and notoriously difficult problem in time-series analysis: learning true causal structures when data is measured much slower than the true underlying process (i.e., "undersampling"). This mismatch is common in fields like neuroscience—where fMRI scans are far slower than neural activity—and leads to standard causal learning methods producing misleading results.</p>
+                        
+                        <p>The core innovation of this work is a new algorithm, <strong>sRASL (Solver-based Rate-Agnostic Structure Learning)</strong>, which finds the true, fast-timescale causal graph without knowing the undersampling rate. This was achieved by skillfully reformulating the (NP-complete) search problem into a highly efficient constraint satisfaction problem. This approach demonstrates a strong command of Answer Set Programming (ASP), a sophisticated declarative logic framework used to solve complex combinatorial problems.</p>
+                        
+                        <p><strong>The project's mathematical rigor is showcased in two key areas:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Novel Constraints:</strong> The algorithm's speed does not come from a simple translation to ASP. It integrates novel theoretical insights, introducing new constraints based on the graph-theoretic properties of Strongly Connected Components (SCCs). This innovation prunes the search space exponentially, enabling massive performance gains.</li>
+                            <li><strong>Formal Guarantees:</strong> The method was formally proven to be correct and complete by showing it is a "direct encoding" of the undersampling problem, guaranteeing it finds the entire set of valid solutions.</li>
+                        </ul>
+                        
+                        <p>Finally, the algorithm includes a robust optimization mode that handles real-world statistical noise, allowing it to find the 'closest' valid causal graph even when the input data is imperfect.</p>
+                        
+                        <p><strong>The results were a breakthrough in scalability, demonstrating:</strong></p>
+                        <ul style="margin-left: 2rem;">
+                            <li><strong>Speed:</strong> A speed-up of over three orders of magnitude (e.g., reducing a benchmark from ~1000 minutes to 6 seconds).</li>
+                            <li><strong>Scale:</strong> The ability to analyze graphs with over 100 nodes, a massive leap from the previous 6-node limit.</li>
+                        </ul>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
