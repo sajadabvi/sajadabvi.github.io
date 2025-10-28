@@ -106,6 +106,55 @@
             color: #64748b;
             line-height: 1.7;
         }
+        .education-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .education-item {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .education-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+        .education-degree {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+            flex: 1;
+        }
+        .education-date {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .education-school {
+            font-size: 1rem;
+            color: #475569;
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+        .education-gpa {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
         @media (max-width: 768px) {
             .highlight-grid {
                 grid-template-columns: 1fr;
@@ -114,6 +163,14 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0.5rem;
+            }
+            .education-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .education-date {
+                white-space: normal;
             }
         }
     </style>
@@ -149,6 +206,40 @@
             <p class="subtitle">Final-year PhD Candidate in Electrical & Computer Engineering</p>
             <p>With seven years of experience in machine learning, causal inference, and time series analysis, I am actively seeking full-time positions starting in January 2026.</p>
             <p><strong>Specializing in causal learning, deep learning, and advanced time series analysis.</strong></p>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section-divider" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2>Education</h2>
+                <a href="/resume/" class="view-more-link">View Full Resume →</a>
+            </div>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">Ph.D. in Electrical and Computer Engineering</h3>
+                        <span class="education-date">Aug 2020 – Dec 2025</span>
+                    </div>
+                    <p class="education-school">Georgia Institute of Technology</p>
+                    <p class="education-gpa">GPA: 3.9/4.0</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">M.S. in Electrical and Computer Engineering</h3>
+                        <span class="education-date">Aug 2020 – Aug 2023</span>
+                    </div>
+                    <p class="education-school">Georgia Institute of Technology</p>
+                    <p class="education-gpa">GPA: 3.9/4.0</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">B.S. in Electrical Engineering</h3>
+                        <span class="education-date">Sep 2014 – Sep 2019</span>
+                    </div>
+                    <p class="education-school">Ferdowsi University of Mashhad</p>
+                    <p class="education-gpa">GPA: 4.0/4.0</p>
+                </div>
+            </div>
         </div>
 
         <!-- Research Highlights Section -->
