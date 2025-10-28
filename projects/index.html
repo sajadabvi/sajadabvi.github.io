@@ -221,8 +221,18 @@
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>What if measuring data <strong>less frequently</strong> actually gave you <strong>more information</strong> about causality? This paper presents a groundbreaking idea that challenges the common belief that higher measurement rates are always better. Instead, by strategically undersampling, we can reduce ambiguity and gain a sharper understanding of causal relationships!</p>
-                        <p><strong>Key Results:</strong> Hidden insights unlocked through slower measurements, reduced equivalence classes, and non-monotonic effects where adding a slower dataset can increase accuracy more than adding a faster dataset.</p>
+                        <p>This research challenges a fundamental assumption in data-driven science. The common belief is that to improve causal discovery, one must always measure a system faster. Our innovation was to formally prove this is incorrect: we show that new information can be gained by deliberately adding a slower measurement. This counter-intuitive <strong>"non-monotonic undersampling"</strong> phenomenon works because the slower timescale provides a different "perspective" on the system, helping to eliminate "causal illusions" (ambiguities) that exist at a single timescale.</p>
+                        
+                        <p>To operationalize this discovery, this project introduced the <strong>dRASL algorithm</strong>. This demonstrates advanced skills in Answer Set Programming (ASP), as dRASL is a novel generalization of our previous sRASL solver. Instead of just solving for one observed graph, dRASL is designed to find the joint equivalence class of causal structures consistent with multiple graphs from different timescales (e.g., H<sub>u</sub> and H<sub>v</sub>).</p>
+                        
+                        <p><strong>The mathematical rigor of this work is grounded in the formal conditions for non-monotonicity.</strong> We performed extensive computational experiments to validate the theory. The key results are:</p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>It Works:</strong> We proved the phenomenon exists. In one example, adding a slower graph (G<sub>5</sub>) to an existing one (G<sub>4</sub>) reduced the equivalence class (the number of possible solutions) from 11 graphs to 3.</li>
+                            <li><strong>It's Common:</strong> This benefit is not a rare edge case. We found it occurs most frequently in sparse causal graphs—a property that aligns with the density of many real-world systems, such as brain or social networks.</li>
+                            <li><strong>It's Powerful:</strong> The "gain" from this method is significant, commonly reducing the solution space by 1-2 orders of magnitude (10x-100x), with some cases showing a 1000-fold reduction.</li>
+                        </ul>
+                        
+                        <p>This research provides a new, low-cost path for improving causal discovery and shows that historical, slower-timescale data can be reused to gain new insights.</p>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
