@@ -155,6 +155,38 @@
             color: #64748b;
             margin: 0;
         }
+        .education-coursework {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0.75rem 0 0 0;
+        }
+        .education-coursework em {
+            color: #475569;
+            font-style: normal;
+            font-weight: 600;
+        }
+        .publications-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #3b82f6;
+        }
+        .publications-list {
+            margin: 0;
+            padding-left: 0;
+            list-style-position: outside;
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+        .publications-list li {
+            margin-bottom: 0.65rem;
+        }
+        .publications-list li:last-child {
+            margin-bottom: 0;
+        }
         .social-links {
             display: flex;
             justify-content: center;
@@ -250,7 +282,6 @@
             
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="/research/">Research</a>
                 <a href="/projects/">Projects</a>
                 <a href="/resume/">Resume</a>
                 <a href="/contact/">Contact</a>
@@ -264,7 +295,7 @@
             <img src="/images/profile.jpg" alt="Sajad Abavisani" class="profile-image">
             <h1>Sajad Abavisani</h1>
             <p class="subtitle">Final-year PhD Candidate in Electrical & Computer Engineering</p>
-            <p>With seven years of experience in machine learning, causal inference, and time series analysis, I am actively seeking full-time positions starting in January 2026.</p>
+            <p>With seven years of experience in machine learning, causal inference, and time series analysis, I am actively seeking full-time positions starting in May 2026.</p>
             <p><strong>Specializing in causal learning, deep learning, and advanced time series analysis.</strong></p>
             
             <div class="social-links">
@@ -299,10 +330,11 @@
                 <div class="education-item">
                     <div class="education-header">
                         <h3 class="education-degree">Ph.D. in Electrical and Computer Engineering</h3>
-                        <span class="education-date">Aug 2020 – Dec 2025</span>
+                        <span class="education-date">Aug 2020 – May 2026</span>
                     </div>
                     <p class="education-school">Georgia Institute of Technology</p>
-                    <p class="education-gpa">GPA: 3.9/4.0</p>
+                    <p class="education-gpa">GPA: 3.8/4.0</p>
+                    <p class="education-coursework"><em>Select coursework:</em> Mathematical Foundations of ML, ML with Limited Supervision, Conversational AI, Convex Optimization, Statistical ML, Information Theory, Random Processes</p>
                 </div>
                 <div class="education-item">
                     <div class="education-header">
@@ -323,11 +355,29 @@
             </div>
         </div>
 
+        <!-- Research & Publications Section -->
+        <div class="section-divider" id="research-publications">
+            <div class="section-header">
+                <h2>Research & Publications</h2>
+                <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;hl=en&amp;user=tuDtPWgAAAAJ" target="_blank" rel="noopener noreferrer" class="view-more-link">Google Scholar →</a>
+            </div>
+            <div class="publications-card">
+                <ul class="publications-list">
+                    <li><strong>GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</strong> – ICLR 2023 (Oral Presentation, Top 25%)</li>
+                    <li><strong>Causal Learning through Deliberate Undersampling</strong> – Proceedings of the Second Conference on Causal Learning and Reasoning (2023)</li>
+                    <li><strong>Reducing Causal Illusions through Deliberate Undersampling</strong> – NeurIPS 2022 Workshop (2022)</li>
+                    <li><strong>Greedy AutoAugment</strong> – Pattern Recognition Letters Journal (Elsevier, 2020)</li>
+                    <li><strong>Radiologist-Level COVID-19 Detection Using CT scans</strong> – (2020)</li>
+                    <li><strong>Causal Graph Recovery in Neuroimaging through Answer Set Programming</strong> – Preprint</li>
+                    <li><strong>ION-C: Integration of Overlapping Networks via Constraints</strong> – Preprint</li>
+                </ul>
+            </div>
+        </div>
+
         <!-- Research Highlights Section -->
         <div class="section-divider">
             <div class="section-header">
                 <h2>Featured Research</h2>
-                <a href="/research/" class="view-more-link">View All Publications →</a>
             </div>
             <div class="highlight-grid">
                 <div class="highlight-card">
@@ -399,20 +449,20 @@
             </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <p class="skill-list">Python, C++, Matlab, JAVA, Clingo, R</p>
+                    <h3>Languages</h3>
+                    <p class="skill-list">Python, C++, JavaScript, R, Java, SQL, Clingo/ASP</p>
                 </div>
                 <div class="skill-category">
-                    <h3>ML Frameworks & Libraries</h3>
-                    <p class="skill-list">TensorFlow, PyTorch (CUDA), Scikit-learn, NetworkX, igraph, OpenCV</p>
+                    <h3>ML &amp; Deep Learning</h3>
+                    <p class="skill-list">PyTorch (CUDA), TensorFlow, Hugging Face (Transformers, PEFT, Datasets), LLM fine-tuning, RAG pipelines (LangChain, LlamaIndex), Graph Neural Networks (PyTorch Geometric), Transformers, GANs, Diffusion Models, Capsule Networks, Scikit-learn</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Machine Learning & AI</h3>
-                    <p class="skill-list">Multimodal LLMs, Transformers, Conformers, Predictive & Statistical Modeling, Optimization</p>
+                    <h3>Data &amp; Infrastructure</h3>
+                    <p class="skill-list">Pandas, NumPy, SciPy, NetworkX, Statsmodels, Docker, AWS, Azure ML, W&amp;B, MLflow, Git, GitHub Actions CI/CD, Linux, SLURM clusters</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Other Technologies</h3>
-                    <p class="skill-list">Docker, Git, Parallel Computing, Scalable Solutions, Answer Set Programming</p>
+                    <h3>Specializations</h3>
+                    <p class="skill-list">Causal inference, constraint programming (ASP/Clingo), graph algorithms, time series analysis &amp; forecasting, statistical modeling, Bayesian inference, optimization, open-source development (PyPI), agentic coding (Claude Code, Cursor)</p>
                 </div>
             </div>
         </div>
@@ -422,6 +472,6 @@
         <p>&copy; 2025 Sajad Abavisani. All rights reserved.</p>
     </footer>
 
-    <script src="/scripts/navigation.js?v=2.1" defer></script>
+    <script src="/scripts/navigation.js?v=2.2" defer></script>
 </body>
 </html>

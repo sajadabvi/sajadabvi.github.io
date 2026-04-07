@@ -2,13 +2,13 @@
  * Modern Mobile Navigation & Image Lightbox
  * Clean, accessible hamburger menu with smooth animations
  * Full-screen image viewer with captions
- * Version: 2.1
+ * Version: 2.2
  */
 
 (function() {
   'use strict';
   
-  console.log('Navigation script loaded - Version 2.1');
+  console.log('Navigation script loaded - Version 2.2');
 
   function initNavigation() {
     const hamburger = document.querySelector('.hamburger');
@@ -114,12 +114,16 @@
       return;
     }
     
-    // Create lightbox HTML
+    // Create lightbox HTML (gallery nav when images are inside .photo-gallery)
     const lightboxHTML = '<div id="imageLightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">' +
-      '<button class="lightbox-close" aria-label="Close image viewer">&times;</button>' +
+      '<button type="button" class="lightbox-close" aria-label="Close image viewer">&times;</button>' +
+      '<div class="lightbox-inner">' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>' +
       '<div class="lightbox-content">' +
       '<img class="lightbox-image" src="" alt="">' +
       '<div class="lightbox-caption"></div>' +
+      '</div>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>' +
       '</div>' +
       '</div>';
     
@@ -131,6 +135,59 @@
     const lightboxImg = lightbox.querySelector('.lightbox-image');
     const lightboxCaption = lightbox.querySelector('.lightbox-caption');
     const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+
+    let galleryImages = [];
+    let galleryIndex = 0;
+
+    function getImageCaption(img) {
+      const figureContainer = img.closest('.figure-container');
+      if (figureContainer) {
+        const figureCaptionElement = figureContainer.querySelector('.figure-caption');
+        if (figureCaptionElement) {
+          return figureCaptionElement.textContent.trim();
+        }
+      }
+      const nextEl = img.nextElementSibling;
+      if (nextEl && nextEl.tagName === 'P') {
+        return nextEl.textContent.trim();
+      }
+      return img.alt || '';
+    }
+
+    function showLightboxSlide() {
+      const img = galleryImages[galleryIndex];
+      if (!img) {
+        return;
+      }
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = getImageCaption(img);
+
+      const multi = galleryImages.length > 1;
+      prevBtn.classList.toggle('is-hidden', !multi);
+      nextBtn.classList.toggle('is-hidden', !multi);
+      if (multi) {
+        prevBtn.disabled = galleryIndex <= 0;
+        nextBtn.disabled = galleryIndex >= galleryImages.length - 1;
+      } else {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+      }
+    }
+
+    function navigateLightbox(delta) {
+      if (galleryImages.length <= 1) {
+        return;
+      }
+      const next = galleryIndex + delta;
+      if (next < 0 || next >= galleryImages.length) {
+        return;
+      }
+      galleryIndex = next;
+      showLightboxSlide();
+    }
     
     // Find all images in main content (exclude navigation and footer)
     const images = document.querySelectorAll('main img, .content-section img, .project-figures img, .profile-image');
@@ -160,22 +217,14 @@
     
     function openLightbox(img) {
       console.log('Opening lightbox for:', img.src);
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      
-      // Get caption from alt text or figure caption
-      let caption = img.alt;
-      
-      // Try to find figure caption (compatible with older browsers)
-      const figureContainer = img.closest('.figure-container');
-      if (figureContainer) {
-        const figureCaptionElement = figureContainer.querySelector('.figure-caption');
-        if (figureCaptionElement) {
-          caption = figureCaptionElement.textContent;
-        }
+      const galleryEl = img.closest('.photo-gallery');
+      galleryImages = galleryEl ? Array.from(galleryEl.querySelectorAll('img')) : [img];
+      galleryIndex = galleryImages.indexOf(img);
+      if (galleryIndex < 0) {
+        galleryIndex = 0;
       }
-      
-      lightboxCaption.textContent = caption;
+
+      showLightboxSlide();
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
       closeBtn.focus();
@@ -192,6 +241,18 @@
       e.preventDefault();
       closeLightbox();
     });
+
+    prevBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      navigateLightbox(-1);
+    });
+
+    nextBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      navigateLightbox(1);
+    });
     
     // Close on background click
     lightbox.addEventListener('click', function(e) {
@@ -200,10 +261,20 @@
       }
     });
     
-    // Close on escape key
+    // Escape, arrow keys (when lightbox open)
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      if (!lightbox.classList.contains('active')) {
+        return;
+      }
+      if (e.key === 'Escape') {
         closeLightbox();
+        e.preventDefault();
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(-1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(1);
+        e.preventDefault();
       }
     });
     

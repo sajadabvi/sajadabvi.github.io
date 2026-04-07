@@ -38,8 +38,7 @@ To test the website locally:
 
 - `/styles/custom.css` - All CSS styling with mobile-first approach
 - `/scripts/navigation.js` - Navigation functionality (hamburger menu toggle)
-- `/index.html` - Homepage
-- `/research/` - Research & publications
+- `/index.html` - Homepage (includes research & publications list)
 - `/projects/` - Project portfolio
 - `/resume/` - CV and resume
 - `/skills/` - Technical skills
