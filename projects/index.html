@@ -165,6 +165,37 @@
 
             <h2 class="section-title">Research Projects</h2>
 
+            <!-- Solution-Set Transformer Project -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Solution-Set Transformer: Graph Transformer for fMRI Classification</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>A two-level deep learning architecture for classifying healthy controls vs. schizophrenia patients directly from fMRI functional connectivity graphs — and critically, from the <em>multi-graph equivalence class</em> that RASL-based causal discovery produces for each subject.</p>
+
+                        <p><strong>Architecture:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Graph encoder:</strong> BrainNetTransformer-style Graph Transformer encodes each candidate causal graph into a fixed-size embedding.</li>
+                            <li><strong>Set Transformer:</strong> Permutation-invariant aggregator over the variable-size set of candidate graphs per subject — a capability uniquely enabled by RASL's multi-solution output.</li>
+                            <li><strong>Diagnostic head:</strong> Binary classifier trained end-to-end, learning biomarkers that emerge only from the full equivalence class.</li>
+                        </ul>
+
+                        <p>This is the first architecture to treat the causal equivalence class itself as a first-class input, rather than collapsing it to a single representative graph.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/sst_fig1.png" alt="Solution-Set Transformer Architecture">
+                            <p class="figure-caption">Two-level architecture: Graph Transformer encoder + Set Transformer aggregator over RASL solution sets.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/gunfolds/blob/master/gunfolds/scripts/analysis/solution_set_transformer.py" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- GRACE-C Project -->
             <div class="project-card">
                 <div class="project-header">
@@ -346,25 +377,36 @@
                 </div>
             </div>
 
-            <!-- Piecing Together the Causal Puzzle -->
+            <!-- RnR / Piecing Together the Causal Puzzle -->
             <div class="project-card">
                 <div class="project-header">
-                    <h3 class="project-title">Piecing Together the Causal Puzzle</h3>
+                    <h3 class="project-title">RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series</h3>
                     <span class="project-toggle">▼</span>
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>"Piecing Together the Causal Puzzle" confronts one of neuroimaging's toughest challenges—recovering the true causal structure from undersampled, noisy time series data. This work innovates by leveraging Answer Set Programming (ASP) to rigorously explore and prune the space of potential causal graphs.</p>
-                        <p>Demonstrates robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates.</p>
+                        <p>This line of work confronts one of neuroimaging's toughest challenges — recovering the true causal structure from undersampled, noisy time series data. It began with the preprint <em>"Piecing Together the Causal Puzzle"</em> (Highway to Causality), which showed that ASP-based solvers could rigorously explore and prune the space of candidate causal graphs on real fMRI data. The latest evolution of this work is <strong>RnR (Rock 'n' RASL)</strong>, a meta-solver under review at ICML 2026.</p>
+
+                        <p>RnR plugs into the output of <em>any</em> causal discovery algorithm (PCMCI, FASK, MVGC, GIMME, etc.) and refines it by explicitly modeling undersampling effects via ASP, achieving globally optimal solutions while scaling to realistic graph sizes.</p>
+
+                        <p><strong>Technical highlights:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Grounding complexity O(n³·u):</strong> Polynomial growth in graph size and undersampling rate — no exponential blowup.</li>
+                            <li><strong>SCC decomposition:</strong> Reduces per-component search from 2<sup>(n²)</sup> to 2<sup>(s²)</sup>, giving linear scaling across components (~4 orders of magnitude reduction in search space for typical graphs).</li>
+                            <li><strong>Parallel CDNL search:</strong> 15 parallel Clingo threads with the Crafty heuristic.</li>
+                            <li><strong>Three-stage lexicographic optimization</strong> within a single solve call: density → latent structure → edge orientation, preserving global optimality guarantees at every stage.</li>
+                        </ul>
+
+                        <p><strong>Results:</strong> <strong>45% F1 improvement</strong> over SOTA baselines. Robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates. Validated on real resting-state fMRI for schizophrenia detection.</p>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
                             <img src="/images/causal_puzzle_fig1.jpeg" alt="Solution Set Analysis">
-                            <p class="figure-caption">Optimization solution set size and commission error across different undersamplings.</p>
+                            <p class="figure-caption">Optimization solution set size and commission error across different undersampling rates.</p>
                         </div>
                         <div class="figure-container">
                             <img src="/images/causal_puzzle_fig2.png" alt="Causal Graph Recovery">
-                            <p class="figure-caption">ASP-based causal graph recovery from undersampled noisy data.</p>
+                            <p class="figure-caption">ASP-based causal graph recovery from undersampled noisy neuroimaging data.</p>
                         </div>
                         <div class="figure-container">
                             <img src="/images/causal_puzzle_fig3.jpeg" alt="BOLD Signal Preservation">
@@ -405,7 +447,88 @@
 
             <h2 class="section-title">Technical Projects</h2>
 
-            <!-- LLM & Knowledge Graphs -->
+            <!-- LLM-Guided Causal Graph Selection -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">LLM-Guided Causal Graph Selection (llm-causal-select)</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>The gunfolds RASL algorithm efficiently enumerates <em>all</em> causal-timescale graphs consistent with an observed undersampled time series. In practice, this equivalence class often contains dozens of candidates — choosing among them traditionally requires domain knowledge or expensive additional constraints. <strong>llm-causal-select</strong> replaces that manual step with a learned LLM-based selector.</p>
+
+                        <p><strong>Approach:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Fine-tuned Mistral-7B-Instruct</strong> (also supports Llama-3-8B) with <strong>LoRA / QLoRA</strong> on synthetic training examples generated by gunfolds' own causal simulator. No public dataset covers this task — every training example is produced from the same ground-truth simulator used in the RnR work, making the fine-tuning genuinely domain-specific.</li>
+                            <li><strong>4-bit quantization</strong> via bitsandbytes NF4, allowing 7B-scale training on a single 24GB GPU.</li>
+                            <li><strong>PEFT + instruction tuning</strong> with custom prompt masking in the PyTorch Dataset, so loss is computed only on the target completion.</li>
+                            <li><strong>HuggingFace Transformers + Accelerate</strong> training stack, with a clean YAML-config + dataclasses architecture.</li>
+                            <li><strong>Evaluation metrics:</strong> SHD, edge-F1, top-1 selection accuracy against held-out ground-truth graphs.</li>
+                        </ul>
+
+                        <p>At inference time the LLM reads the observed undersampled graph and the RASL candidate list, then outputs the most likely ground-truth DAG — acting as a learned prior over the equivalence class and a drop-in complement to gunfolds' <code>drasl()</code>.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/llm_causal_select_fig1.png" alt="llm-causal-select Pipeline">
+                            <p class="figure-caption">Pipeline: gunfolds simulator generates (G*, G_u, candidates) triples → GraphFormatter converts to prompt/completion JSONL → LoRA fine-tuning → LLMCausalSelector at inference.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/llm-causal-select" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quantfolio -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Quantfolio: Quantitative Portfolio Intelligence Platform</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p><strong>Quantfolio</strong> is a portfolio-aware signal engine for the terminal: it watches your holdings and surfaces only the news that changes your decisions — ranked, filtered, and quiet. Not a dashboard. Not a feed. A three-tier attention system designed around how traders actually process information.</p>
+
+                        <p><strong>Three attention tiers:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Morning brief</strong> — exactly 3 ranked signals with a 1–2 sentence synthesis (Claude API or rule-based fallback). Run once at market open.</li>
+                            <li><strong>Hourly digest</strong> — silent terminal output of deltas during market hours. No push unless threshold crossed.</li>
+                            <li><strong>Push-now</strong> — rare, rate-limited (default 2/day). Earnings miss on held position, trading halt, M&amp;A, FDA ruling, analyst revision above threshold. Delivered via ntfy.sh (phone, no account needed) or macOS desktop notification.</li>
+                        </ul>
+
+                        <p><strong>4-axis scoring pipeline:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Materiality</strong> — keyword rubric (earnings, FDA, halt, M&amp;A…) × source tier (Reuters/Bloomberg > Yahoo Finance > Google News).</li>
+                            <li><strong>Portfolio impact</strong> — score multiplied by position weight. A 40% holding on the same event scores 2.2× a 2% holding. Unheld tickers attenuated to 0.4×.</li>
+                            <li><strong>Novelty</strong> — SHA-256 dedup on normalized title + source. Prevents yesterday's story resurfacing regardless of minor edits.</li>
+                            <li><strong>Urgency</strong> — keyword boost for time-sensitive language (tonight, breaking, halted).</li>
+                        </ul>
+
+                        <p><strong>Additional features:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>SQLite persistence</strong> — positions, seen headlines, and signal log with user ratings stored at <code>~/.quantfolio/quantfolio.db</code>.</li>
+                            <li><strong>Theme graph</strong> — 20 curated sector themes (AI, semis, defense, space…) in YAML. When a theme trends but you hold none of its members, brief surfaces proxy ETFs.</li>
+                            <li><strong>Journal command</strong> — interactively rate signals as useful/noise; structures feedback for future weight tuning.</li>
+                            <li><strong>Zero-config brokerage import</strong> — auto-maps Fidelity, E*TRADE, Schwab, IBKR CSV exports.</li>
+                            <li><strong>cron/launchd templates</strong> — deploy/ directory ships ready-to-use automation for macOS.</li>
+                        </ul>
+
+                        <p><strong>Stack:</strong> Python 3.10+, yfinance, feedparser, rich, PyYAML, SQLite, Anthropic SDK (optional), ntfy.sh, osascript. Fully installable package (<code>pyproject.toml</code>) with unit tests for the scoring and novelty modules.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/quantfolio_fig1.png" alt="Quantfolio terminal output">
+                            <p class="figure-caption">Quantfolio CLI: Rich-formatted portfolio snapshot + ranked news brief with per-ticker panels.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/quantfolio" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LLM & Knowledge Graphs (older) -->
             <div class="project-card">
                 <div class="project-header">
                     <h3 class="project-title">Large Language Models & Knowledge Graphs</h3>
