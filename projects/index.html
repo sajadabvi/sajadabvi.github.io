@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/styles/custom.css">
     <style>
         .project-card {
+            scroll-margin-top: 5rem;
             background: white;
             border-radius: 0.5rem;
             margin-bottom: 1.5rem;
@@ -166,7 +167,7 @@
             <h2 class="section-title">Research Projects</h2>
 
             <!-- Solution-Set Transformer Project -->
-            <div class="project-card">
+            <div class="project-card" id="project-solution-set-transformer">
                 <div class="project-header">
                     <h3 class="project-title">Solution-Set Transformer: Graph Transformer for fMRI Classification</h3>
                     <span class="project-toggle">▼</span>
@@ -197,7 +198,7 @@
             </div>
 
             <!-- GRACE-C Project -->
-            <div class="project-card">
+            <div class="project-card" id="project-grace-c">
                 <div class="project-header">
                     <h3 class="project-title">GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</h3>
                     <span class="project-toggle">▼</span>
@@ -244,7 +245,7 @@
             </div>
 
             <!-- Causal Learning through Deliberate Undersampling -->
-            <div class="project-card">
+            <div class="project-card" id="project-deliberate-undersampling">
                 <div class="project-header">
                     <h3 class="project-title">Causal Learning through Deliberate Undersampling</h3>
                     <span class="project-toggle">▼</span>
@@ -287,7 +288,7 @@
             </div>
 
             <!-- Greedy AutoAugment -->
-            <div class="project-card">
+            <div class="project-card" id="project-greedy-autoaugment">
                 <div class="project-header">
                     <h3 class="project-title">Greedy AutoAugment</h3>
                     <span class="project-toggle">▼</span>
@@ -334,7 +335,7 @@
             </div>
 
             <!-- DECAPS COVID-19 Detection -->
-            <div class="project-card">
+            <div class="project-card" id="project-decaps">
                 <div class="project-header">
                     <h3 class="project-title">Radiologist-Level COVID-19 Detection Using CT Scans with DECAPS</h3>
                     <span class="project-toggle">▼</span>
@@ -378,14 +379,14 @@
             </div>
 
             <!-- RnR / Piecing Together the Causal Puzzle -->
-            <div class="project-card">
+            <div class="project-card" id="project-rnr">
                 <div class="project-header">
                     <h3 class="project-title">RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series</h3>
                     <span class="project-toggle">▼</span>
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>This line of work confronts one of neuroimaging's toughest challenges — recovering the true causal structure from undersampled, noisy time series data. It began with the preprint <em>"Piecing Together the Causal Puzzle"</em> (Highway to Causality), which showed that ASP-based solvers could rigorously explore and prune the space of candidate causal graphs on real fMRI data. The latest evolution of this work is <strong>RnR (Rock 'n' RASL)</strong>, a meta-solver under review at ICML 2026.</p>
+                        <p>This line of work confronts one of neuroimaging's toughest challenges — recovering the true causal structure from undersampled, noisy time series data. It began with the preprint <em>"Piecing Together the Causal Puzzle"</em> (Highway to Causality), which showed that ASP-based solvers could rigorously explore and prune the space of candidate causal graphs on real fMRI data. The latest evolution of this work is <strong>RnR (Rock 'n' RASL)</strong>, a meta-solver submitted to NeurIPS 2026.</p>
 
                         <p>RnR plugs into the output of <em>any</em> causal discovery algorithm (PCMCI, FASK, MVGC, GIMME, etc.) and refines it by explicitly modeling undersampling effects via ASP, achieving globally optimal solutions while scaling to realistic graph sizes.</p>
 
@@ -421,7 +422,7 @@
             </div>
 
             <!-- ION-C -->
-            <div class="project-card">
+            <div class="project-card" id="project-ion-c">
                 <div class="project-header">
                     <h3 class="project-title">ION-C: Integration of Overlapping Networks via Constraints</h3>
                     <span class="project-toggle">▼</span>
@@ -448,7 +449,7 @@
             <h2 class="section-title">Technical Projects</h2>
 
             <!-- LLM-Guided Causal Graph Selection -->
-            <div class="project-card">
+            <div class="project-card" id="project-llm-causal-select">
                 <div class="project-header">
                     <h3 class="project-title">LLM-Guided Causal Graph Selection (llm-causal-select)</h3>
                     <span class="project-toggle">▼</span>
@@ -481,7 +482,7 @@
             </div>
 
             <!-- Quantfolio -->
-            <div class="project-card">
+            <div class="project-card" id="project-quantfolio">
                 <div class="project-header">
                     <h3 class="project-title">Quantfolio: Quantitative Portfolio Intelligence Platform</h3>
                     <span class="project-toggle">▼</span>
@@ -529,7 +530,7 @@
             </div>
 
             <!-- LLM & Knowledge Graphs (older) -->
-            <div class="project-card">
+            <div class="project-card" id="project-llm-knowledge-graphs">
                 <div class="project-header">
                     <h3 class="project-title">Large Language Models & Knowledge Graphs</h3>
                     <span class="project-toggle">▼</span>
@@ -542,7 +543,7 @@
             </div>
 
             <!-- GANs for Self-Driving Cars -->
-            <div class="project-card">
+            <div class="project-card" id="project-gans-self-driving">
                 <div class="project-header">
                     <h3 class="project-title">Generative Adversarial Networks (GANs) for Self-Driving Cars</h3>
                     <span class="project-toggle">▼</span>
@@ -555,7 +556,7 @@
             </div>
 
             <!-- Topology-Aware SSL -->
-            <div class="project-card">
+            <div class="project-card" id="project-topology-ssl">
                 <div class="project-header">
                     <h3 class="project-title">Topology-Aware Self-Supervised Learning</h3>
                     <span class="project-toggle">▼</span>
@@ -568,7 +569,7 @@
             </div>
 
             <!-- Dynamical Systems -->
-            <div class="project-card">
+            <div class="project-card" id="project-dynamical-systems">
                 <div class="project-header">
                     <h3 class="project-title">Dynamical System Prediction with Neural Networks</h3>
                     <span class="project-toggle">▼</span>
@@ -581,7 +582,7 @@
             </div>
 
             <!-- Eye Gaze Tracking -->
-            <div class="project-card">
+            <div class="project-card" id="project-eye-gaze">
                 <div class="project-header">
                     <h3 class="project-title">Eye Gaze Tracking Device</h3>
                     <span class="project-toggle">▼</span>
@@ -602,28 +603,61 @@
 
     <script src="/scripts/navigation.js?v=2.2" defer></script>
     <script>
-        // Project expand/collapse functionality
+        // Project expand/collapse + deep-link from homepage (e.g. /projects/#project-grace-c)
         document.addEventListener('DOMContentLoaded', function() {
             const projectCards = document.querySelectorAll('.project-card');
-            
+
+            function setExpanded(card, expanded) {
+                const header = card.querySelector('.project-header');
+                card.classList.toggle('expanded', expanded);
+                if (header) {
+                    header.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                }
+            }
+
+            function expandProject(card, scrollIntoView) {
+                if (!card) {
+                    return;
+                }
+                projectCards.forEach(function(c) {
+                    setExpanded(c, c === card);
+                });
+                if (scrollIntoView) {
+                    requestAnimationFrame(function() {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                }
+            }
+
+            function expandFromHash() {
+                const hash = window.location.hash;
+                if (!hash || hash.length < 2) {
+                    return;
+                }
+                const card = document.querySelector(hash);
+                if (card && card.classList.contains('project-card')) {
+                    expandProject(card, true);
+                }
+            }
+
             projectCards.forEach(function(card) {
                 const header = card.querySelector('.project-header');
-                
+
                 header.addEventListener('click', function() {
-                    // Toggle the expanded class
-                    card.classList.toggle('expanded');
-                    
-                    // Update ARIA attributes for accessibility
-                    const isExpanded = card.classList.contains('expanded');
-                    header.setAttribute('aria-expanded', isExpanded);
+                    const willExpand = !card.classList.contains('expanded');
+                    if (willExpand) {
+                        projectCards.forEach(function(c) {
+                            setExpanded(c, c === card);
+                        });
+                    } else {
+                        setExpanded(card, false);
+                    }
                 });
-                
-                // Initialize ARIA attributes
+
                 header.setAttribute('role', 'button');
                 header.setAttribute('aria-expanded', 'false');
                 header.setAttribute('tabindex', '0');
-                
-                // Add keyboard support
+
                 header.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
@@ -631,6 +665,9 @@
                     }
                 });
             });
+
+            expandFromHash();
+            window.addEventListener('hashchange', expandFromHash);
         });
     </script>
 </body>
