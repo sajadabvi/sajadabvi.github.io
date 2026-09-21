@@ -1,6 +1,6 @@
 # sajadabvi.github.io
 
-Personal website for Sajad Abavisani - Final-year PhD Candidate in Electrical & Computer Engineering.
+Personal website for Sajad Abavisani - Ph.D. in Electrical & Computer Engineering, Georgia Tech.
 
 ## Features
 
