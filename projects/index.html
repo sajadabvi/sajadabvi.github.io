@@ -162,7 +162,7 @@
     <main id="main">
         <div class="content-section">
             <h1>Projects & Portfolio</h1>
-            <p style="color: #64748b; margin-bottom: 2rem;">Explore my research and technical projects showcasing innovations in machine learning, causal inference, and computer vision. Click on any project to expand and view details.</p>
+            <p style="color: #64748b; margin-bottom: 2rem;">Explore my research and technical projects showcasing innovations in machine learning, causal inference, agentic LLM systems, and computer vision. Click on any project to expand and view details.</p>
 
             <h2 class="section-title">Research Projects</h2>
 
@@ -386,7 +386,7 @@
                 </div>
                 <div class="project-content">
                     <div class="project-description">
-                        <p>This line of work confronts one of neuroimaging's toughest challenges — recovering the true causal structure from undersampled, noisy time series data. It began with the preprint <em>"Piecing Together the Causal Puzzle"</em> (Highway to Causality), which showed that ASP-based solvers could rigorously explore and prune the space of candidate causal graphs on real fMRI data. The latest evolution of this work is <strong>RnR (Rock 'n' RASL)</strong>, a meta-solver submitted to NeurIPS 2026.</p>
+                        <p>This line of work confronts one of neuroimaging's toughest challenges — recovering the true causal structure from undersampled, noisy time series data. It began with the preprint <em>"Piecing Together the Causal Puzzle"</em> (Highway to Causality), which showed that ASP-based solvers could rigorously explore and prune the space of candidate causal graphs on real fMRI data. The latest evolution of this work is <strong>RnR (Rock 'n' RASL)</strong>, a meta-solver <strong>accepted at NeurIPS 2026</strong>.</p>
 
                         <p>RnR plugs into the output of <em>any</em> causal discovery algorithm (PCMCI, FASK, MVGC, GIMME, etc.) and refines it by explicitly modeling undersampling effects via ASP, achieving globally optimal solutions while scaling to realistic graph sizes.</p>
 
@@ -432,6 +432,7 @@
                         <p>This project introduces ION-C, a computationally efficient algorithm that builds a single, unified causal model from separate, partially overlapping datasets. We solved a major scalability problem with the original "ION" algorithm, which was unusable on graphs with more than 6 nodes</p>
                         <p>Our key achievement was reformulating the problem using Answer Set Programming (ASP), creating a new method that is provably sound and complete. We successfully scaled this new algorithm to graphs with up to 25 nodes.</p>
                         <p> Simulation results showed extremely high accuracy: causal links that appeared in ≥90% of solutions were 99.55% accurate to the ground truth. We also demonstrated a real-world application on European Social Survey data, where ION-C successfully identified a plausible causal connection between two variables that were never measured together in the same survey.</p>
+                        <p><strong>Status:</strong> under review at ICLR 2027 (preprint on arXiv, 2024).</p>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
@@ -447,6 +448,83 @@
             </div>
 
             <h2 class="section-title">Technical Projects</h2>
+
+            <!-- Local LLM Council + Morning Brief -->
+            <div class="project-card" id="project-llm-council">
+                <div class="project-header">
+                    <h3 class="project-title">Autonomous Market Research on a Local LLM Council (Morning Brief)</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p><strong>Morning Brief</strong> is an agentic pipeline that researches a live equity portfolio every trading day and delivers a digest before the market opens — entirely on a headless Apple-silicon home server, with no paid data feeds and no holdings data ever leaving the machine. The intelligence comes from a <strong>council of local LLMs</strong> served by Ollama, with a closed-source model available as a chairman for open-ended questions.</p>
+
+                        <p><strong>Seven checkpointed stages, bounded context by construction:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>1 · Market</strong> — portfolio quotes plus gold, silver, the 10-year Treasury yield, and bitcoin via yfinance, with configurable significant-move thresholds. No LLM.</li>
+                            <li><strong>2 · News</strong> — Google News RSS per holding, sector, macro asset, and market-wide; deduplicated and snippet-trimmed. No LLM.</li>
+                            <li><strong>3 · Council filter</strong> — every article is judged twice: <strong>Gemma 4</strong> triages each one in its own ~500-character prompt (tuned for recall), then <strong>Qwen3.5-122B</strong> re-judges the survivors in one bounded batch (tuned for precision). An article is "material" only if both models agree.</li>
+                            <li><strong>4 · Summarize</strong> — a short brief per ticker or asset from at most eight filtered articles; skipped when the day is quiet.</li>
+                            <li><strong>5 · Calendar</strong> — earnings and report dates extracted per holding and written as all-day events to a synced Google calendar, deduplicated by a <code>[MB]</code> marker.</li>
+                            <li><strong>6 · Digest</strong> — headline and closing composed from the briefs alone; the model never sees the raw articles.</li>
+                            <li><strong>7 · Send</strong> — email through Mail.app (no stored credentials) with a best-effort Telegram short form. No LLM.</li>
+                        </ul>
+
+                        <p>Every stage writes <code>state/runs/&lt;date&gt;/&lt;stage&gt;.json</code>, so a crash, reboot, or Ollama hiccup resumes from the first incomplete stage without re-spending LLM time. A failed quote, feed, or judgment drops that one item, never the run. Scheduling lives in <strong>OpenClaw cron</strong>: a 4:15 AM ET run on trading days (exits immediately on NYSE holidays), a 7:45 AM send safety net with an exactly-once checkpoint, and a Monday week-ahead email.</p>
+
+                        <p><strong>The council service.</strong> A companion project extends <em>karpathy/llm-council</em> into a hybrid council: two local models answer independently, then anonymously review and rank each other's responses, and a closed-source chairman (GPT-5.5) synthesizes the final decision. It is served as an OpenAI-compatible FastAPI endpoint (model id <code>council</code>) and registered as a model provider in OpenClaw, so any agent can request a deliberated answer as if it were a single model.</p>
+
+                        <p><strong>Portfolio research agent.</strong> Before the daily pipeline, the same local stack (Qwen3.5-122B through OpenClaw, with web-search tools) researched a 40-position portfolio end to end: per-holding reports covering business model, valuation multiples, catalysts, risks, and analyst targets; a portfolio-level sector and concentration review; and a 40-to-15 position rebalancing roadmap under a value-based growth framework — published as a linked Obsidian wiki.</p>
+
+                        <p><strong>Stack:</strong> Python 3.10+, Ollama (Qwen3.5-122B, Gemma 4), OpenClaw agent runtime, yfinance, Google News RSS, FastAPI, httpx, AppleScript for Mail and Calendar, Telegram Bot API, uv.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/llm_council_fig1.svg" alt="Morning Brief pipeline: keyless sources, seven checkpointed stages, two-model local council, delivery channels, and the companion LLM council service">
+                            <p class="figure-caption">Architecture: keyless sources feed seven checkpointed stages; stage 3 is a two-model local council whose unanimous vote decides what is material; the companion council service adds anonymized peer review and a chairman.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/morning-brief" target="_blank" rel="noopener noreferrer" class="project-link">Morning Brief Code</a>
+                        <a href="https://github.com/sajadabvi/local-llm-council" target="_blank" rel="noopener noreferrer" class="project-link">Council Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local LLM Monitor -->
+            <div class="project-card" id="project-llm-monitor">
+                <div class="project-header">
+                    <h3 class="project-title">Local LLM Monitor: Observability for On-Device Models</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Running 100B-parameter models on a laptop-class machine makes memory the scarce resource, and Ollama exposes very little of what is happening. <strong>Local LLM Monitor</strong> is a native macOS dashboard (AppKit with a local WebKit view, no Electron, no web service) that stays open while agents work and answers the questions that matter: which models are loaded, how much unified memory they hold, whether the machine is under memory pressure, and what the agents are doing right now.</p>
+
+                        <p><strong>What it measures automatically:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li>Installed and loaded models from the Ollama API and local manifests, with allocated context capacity and on-disk footprint.</li>
+                            <li>Live Ollama process CPU and resident memory, plus system unified-memory use, compression, swap, and memory pressure sampled from native macOS counters.</li>
+                            <li>A 30-minute activity timeline with inference start/idle transitions inferred from runner CPU.</li>
+                        </ul>
+
+                        <p><strong>Exact telemetry without reading prompts.</strong> A metadata-only streaming proxy on port 11435 sits in front of Ollama and records request timing, prompt and evaluation token counts, context use, and token rate — never the prompts, messages, or generated text. Optional headers let an agent tag requests with task, agent, and parent IDs, and a bundled <code>monitorctl</code> CLI publishes scheduled jobs, tasks, sub-agents, and tool activity as newline-delimited JSON events that the dashboard renders as an agent tree.</p>
+
+                        <p>Every value is labeled by provenance — <strong>Measured</strong> (native counters or proxy metadata), <strong>Reported</strong> (returned by Ollama), <strong>Inferred</strong> (estimated from CPU), or <strong>Unavailable</strong> — so the dashboard never shows a misleading zero for something the source does not expose.</p>
+
+                        <p><strong>Stack:</strong> Swift/AppKit, WebKit, JavaScript, Ollama HTTP API, macOS process and memory counters; dependency-free at runtime, built with the Apple Command Line Tools for macOS 13+.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/llm_monitor_fig1.jpg" alt="Local LLM Monitor dashboard showing loaded Ollama models, memory allocation, and context windows">
+                            <p class="figure-caption">The dashboard on the home server: Qwen3.5-122B loaded and idle (77.7 GB allocated, 262k context), Gemma 4 and a 125B MLX model installed, Ollama and the telemetry bridge online, 83% system memory in use.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/local-llm-monitor" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- LLM-Guided Causal Graph Selection -->
             <div class="project-card" id="project-llm-causal-select">

@@ -40,55 +40,55 @@
             <p>Green Card pending — no sponsorship required</p>
 
             <h2>Summary</h2>
-            <p>Ph.D. in Electrical and Computer Engineering from Georgia Tech, with years of experience in machine learning, causal inference, and time series analysis. Eager to apply and further develop expertise in machine learning, deep learning, and advanced time series analysis to solve complex, real-world challenges.</p>
+            <p>Ph.D. in Electrical and Computer Engineering from Georgia Tech (completed Aug 2026), specializing in causal structure learning, large-scale graph algorithms, and LLM/agentic systems. Published at ICLR 2023 (Oral) and NeurIPS 2026; scaled causal graph learning from 6-node toy problems to 100+ node graphs; built and operate production agentic pipelines on local LLMs; released open-source ML tooling (gunfolds). Looking to build trustworthy AI systems end to end, from data ingestion and modeling to deployment and evaluation.</p>
 
             <h2>Education</h2>
             <p><strong>Ph.D. in Electrical &amp; Computer Engineering</strong> – Georgia Institute of Technology, Atlanta, GA (Aug 2020 – Aug 2026) — GPA 3.8/4.0</p>
-            <p style="margin-left: 1.5rem; margin-top: 0.5rem;"><em>Focus:</em> Causal Discovery, Time Series, Deep Learning, Optimization</p>
+            <p style="margin-left: 1.5rem; margin-top: 0.5rem;"><em>Focus:</em> Causal Discovery, Graph Algorithms, Time Series, Deep Learning, Optimization</p>
             <p style="margin-left: 1.5rem; margin-top: 0.5rem;"><em>Coursework:</em> Mathematical Foundations of ML, ML with Limited Supervision, Conversational AI, Convex Optimization, Statistical ML, Information Theory, Random Processes</p>
             
             <p><strong>M.S. in Electrical &amp; Computer Engineering</strong> – Georgia Institute of Technology (Aug 2020 – Aug 2023) — GPA 3.9/4.0</p>
             
             <p><strong>B.S. in Electrical Engineering</strong> – Ferdowsi University of Mashhad, Iran (Sep 2014 – Sep 2019) — GPA 4.0/4.0</p>
-
+            
             <h2>Technical Skills</h2>
             <ul>
-                <li><strong>Languages:</strong> Python, C++, JavaScript, R, Java, SQL, Clingo/ASP</li>
-                <li><strong>ML &amp; Deep Learning:</strong> PyTorch (CUDA), TensorFlow, Hugging Face (Transformers, PEFT, Datasets), LLM fine-tuning, RAG pipelines (LangChain, LlamaIndex), Graph Neural Networks (PyTorch Geometric), Transformers, GANs, Diffusion Models, Capsule Networks, Scikit-learn</li>
-                <li><strong>Data &amp; Infrastructure:</strong> Pandas, NumPy, SciPy, NetworkX, Statsmodels, SQLite, Docker, AWS, Azure ML, W&amp;B, MLflow, Git, GitHub Actions CI/CD, Linux, SLURM clusters</li>
-                <li><strong>Signal Processing &amp; Finance:</strong> Multi-source news aggregation (yfinance, feedparser/RSS), event-driven alert systems with tiered delivery, 4-axis signal scoring (materiality, portfolio-weight impact, SHA-256 novelty dedup, urgency), sector theme graphs, cron/launchd automation, ntfy.sh push, PyYAML config-driven pipelines</li>
-                <li><strong>Specializations:</strong> Causal inference, constraint programming (ASP/Clingo), graph algorithms, time series analysis &amp; forecasting, statistical modeling, Bayesian inference, optimization, open-source packaging (PyPI, pyproject.toml), rich terminal UI, agentic coding (Claude Code, Cursor)</li>
+                <li><strong>Languages: </strong>Python, C++, JavaScript, R, Java, SQL, Clingo/ASP</li>
+                <li><strong>ML &amp; Deep Learning: </strong>PyTorch (CUDA), TensorFlow/JAX, Hugging Face (Transformers, Accelerate, Datasets), LLM fine-tuning (LoRA/PEFT/QLoRA), RAG pipelines (LangChain, LlamaIndex), agentic AI workflows (multi-agent LLM councils, OpenClaw agent runtime), local LLM serving (Ollama: Qwen3.5-122B, Gemma 4), FastAPI, chain-of-thought reasoning, Graph Neural Networks (PyTorch Geometric), Transformers, Graph Transformers, Set Transformers, CNNs, attention mechanisms, encoder-decoder architectures, GANs, Diffusion Models, Capsule Networks, Scikit-learn</li>
+                <li><strong>Data &amp; Infrastructure: </strong>Pandas, NumPy, SciPy, NetworkX, Statsmodels, Docker, GCP, AWS, Azure ML, W&amp;B, MLflow, Git, GitHub Actions CI/CD, Linux, SLURM clusters, performance profiling &amp; optimization</li>
+                <li><strong>Specializations: </strong>Causal inference &amp; discovery, constraint programming (ASP/Clingo), graph algorithms (SCC decomposition, structural constraints), multi-source network integration, time series analysis &amp; forecasting, statistical modeling, Bayesian inference, optimization, open-source development (gunfolds, llm-causal-select), agentic coding (Claude Code, Cursor)</li>
             </ul>
 
             <h2>Research Experience</h2>
+
             <p><strong>AI-Augmented Causal Discovery from Noisy Time Series</strong> — Georgia Tech (2024 – Present)</p>
             <ul>
-                <li>Engineered RnR, a meta-solver that refines outputs of any causal discovery algorithm by modeling undersampling effects via ASP, improving F1 scores by 45% over SOTA baselines (PCMCI, FASK, MVGC, GIMME). Submitted to NeurIPS 2026.</li>
-                <li>Designed prioritized multi-stage optimization (density → latent structure → edge orientation), reducing solution space by ~4 orders of magnitude while maintaining global optimality guarantees. Validated on real fMRI data.</li>
-                <li>Building an AI-enhanced classification pipeline (HC vs Schizophrenia) using Graph Transformers (BrainNetTransformer) and a novel Solution-Set Transformer that learns diagnostic biomarkers from RASL's multi-graph output — a capability unique to our method.</li>
-                <li>Developing an LLM-guided framework to select ground-truth causal graphs from equivalence classes by combining chain-of-thought reasoning with domain knowledge, using fine-tuned models on simulated data with known ground truth.</li>
+                <li>Engineered RnR, a meta-solver that refines the output graph of any causal discovery algorithm by modeling undersampling effects via ASP, improving F1 scores by 45% over SOTA baselines (PCMCI, FASK, MVGC, GIMME). Accepted at NeurIPS 2026.</li>
+                <li>Designed prioritized multi-stage optimization (density → latent structure → edge orientation), cutting the search space by ~4 orders of magnitude while preserving global optimality guarantees; validated end to end on real fMRI data.</li>
+                <li>Building an ML classification pipeline (healthy controls vs. schizophrenia) using Graph Transformers (BrainNetTransformer) and a novel Solution-Set Transformer that learns diagnostic biomarkers from RASL’s multi-graph output — a capability unique to our method.</li>
+                <li>Developing an LLM-guided framework that selects ground-truth causal graphs from equivalence classes by combining chain-of-thought reasoning with domain knowledge; built the LoRA/QLoRA fine-tuning and evaluation pipeline (Hugging Face PEFT; accuracy, edge-F1, SHD) and benchmarked it on simulated graphs with known ground truth.</li>
             </ul>
 
             <p><strong>Scalable Causal Discovery &amp; Network Integration</strong> — Georgia Tech (2022 – 2024)</p>
             <ul>
-                <li>Extended causal discovery from 6-node toy graphs (prior SOTA) to structured graphs with 100+ nodes by exploiting SCC decomposition, achieving linear scaling in number of SCCs — enabling practical neuroimaging applications for the first time.</li>
-                <li>Ran experiments on 19-machine SLURM cluster (64 cores, 512 GB RAM each) with Clingo in 10-thread parallel mode.</li>
-                <li>Developed ION-C: an ASP algorithm for causal learning from overlapping datasets with non-co-measured variables. Proved soundness and completeness; scaled from 4–6 node (prior limit) to 25+ nodes. Validated on European Social Survey data.</li>
+                <li>Scaled graph structure learning from 6-node toy graphs (prior SOTA) to structured graphs with 100+ nodes by exploiting strongly-connected-component (SCC) decomposition, achieving linear scaling in the number of SCCs and enabling practical neuroimaging applications for the first time.</li>
+                <li>Ran distributed experiments on a 19-machine SLURM cluster (64 cores, 512 GB RAM each) with Clingo in 10-thread parallel mode.</li>
+                <li>Developed ION-C, an ASP algorithm that ingests overlapping datasets measuring different variable sets and integrates them into one consistent causal graph. Proved soundness and completeness; scaled from 4–6 nodes (prior limit) to 25+ nodes. Validated on European Social Survey data. Under review at ICLR 2027.</li>
             </ul>
 
             <p><strong>Constraint-Based Causal Structure Learning (GRACE-C)</strong> — Georgia Tech (2020 – 2023)</p>
             <ul>
-                <li>Reformulated the rate-agnostic structure learning problem into a declarative ASP encoding, achieving ~10,000× speedup (17 hrs → 6 sec). ICLR 2023 Oral (top 25%).</li>
+                <li>Reformulated the rate-agnostic structure learning problem into a declarative ASP encoding, achieving ~10,000× speedup (17 hrs → 6 sec). <strong>ICLR 2023 Oral (top 25%).</strong></li>
                 <li>Proved correctness and completeness via direct encoding theorem; verified against 1,000 test graphs with identical outputs to provably correct RASL baseline.</li>
                 <li>Built optimization mode with weighted constraint relaxation for noisy inputs; applied to real resting-state fMRI.</li>
-                <li>Co-developed dRASL for deliberate undersampling: proved that measuring more slowly can reduce causal uncertainty by up to 4 orders of magnitude. Published at CLeaR/PMLR 2023.</li>
-                <li>Released all methods as the pip-installable <em>gunfolds</em> open-source package. (<a href="https://pypi.org/project/gunfolds/" target="_blank" rel="noopener noreferrer">pypi.org/project/gunfolds</a>)</li>
+                <li>Co-developed dRASL for deliberate undersampling: proved that measuring <em>more slowly</em> can reduce causal uncertainty by up to 4 orders of magnitude. Published at CLeaR/PMLR 2023.</li>
+                <li>Released all methods as the pip-installable gunfolds open-source package with CI/CD and Sphinx documentation. (<a href="https://pypi.org/project/gunfolds" target="_blank" rel="noopener noreferrer">pypi.org/project/gunfolds</a>)</li>
             </ul>
 
             <p><strong>Deep Learning for Computer Vision &amp; Medical Imaging</strong> — Georgia Tech / Rutgers (2019 – 2021)</p>
             <ul>
                 <li>Co-developed DECAPS for COVID-19 CT classification: 96.1% AUC with inverted dynamic routing and conditional GAN augmentation (pix2pix), outperforming three board-certified radiologists (95% vs 85% TPR at matched FPR).</li>
-                <li>Co-authored Greedy AutoAugment: reduced augmentation policy search from exponential to linear complexity, 360× fewer GPU-hours than AutoAugment. Published in <em>Pattern Recognition Letters</em>.</li>
+                <li>Co-authored Greedy AutoAugment: reduced augmentation policy search from exponential to linear complexity, 360× fewer GPU-hours than AutoAugment. Published in Pattern Recognition Letters.</li>
             </ul>
 
             <p><strong>Robotic Prosthetic Control</strong> — Ferdowsi University (2017 – 2019)</p>
@@ -98,22 +98,25 @@
 
             <h2>Selected Industry-Relevant Projects</h2>
             <ul>
-                <li><strong>LLM-Guided Causal Graph Selection:</strong> Building a framework using fine-tuned LLMs with chain-of-thought prompting to select ground-truth DAGs from equivalence classes, integrating domain knowledge with data-driven reasoning.</li>
-                <li><strong>Solution-Set Transformer for Brain Classification:</strong> Designing a two-level architecture (graph encoder + Set Transformer + classifier) that learns diagnostic biomarkers from multiple candidate causal graphs per subject — uniquely enabled by RASL's multi-solution output.</li>
-                <li><strong>Net Worth &amp; Portfolio Estimator:</strong> Built a Python tool integrating Yahoo Finance API (yfinance), brokerage CSV import, and real estate valuation to compute portfolio value and net worth with per-position breakdown.</li>
-                <li><strong>iOS Accent-Learning App:</strong> Swift app leveraging OpenAI Whisper for speech recognition with quantitative pronunciation feedback.</li>
-                <li><strong>LLM + Knowledge Graph Reasoning:</strong> Integrated Llama 3 with knowledge graphs to improve logical reasoning on riddle-solving tasks.</li>
-                <li><strong>GAN Robustness for Autonomous Driving:</strong> Trained GANs to augment street-sign datasets, improving classification under adverse weather using multimodal inputs.</li>
+                <li><strong>Local LLM Council with API Chairman (Jul 2026): </strong>Extended karpathy/llm-council into a hybrid council: two local models on Ollama (Qwen3.5-122B, Gemma 4) answer independently, then anonymously review and rank each other&#x27;s responses, and a closed-source chairman (GPT-5.5) synthesizes the final decision. Served as an OpenAI-compatible FastAPI endpoint so any agent framework can call the full three-stage deliberation as a single model; registered as a model provider in OpenClaw.</li>
+                <li><strong>Daily Automated Market-Research Pipeline (Jul 2026 – present, runs every trading day): </strong>Built and operate an agentic pipeline that researches a live equity portfolio before each market open: keyless ingestion of quotes and news (yfinance, Google News RSS); council filtering in which Gemma 4 triages every article and Qwen3.5-122B re-judges survivors, keeping only unanimous “material” verdicts; per-holding briefs; earnings-date extraction to Google Calendar; delivery by email and Telegram. Seven checkpointed, fixed-context stages keep every LLM call inside a local context window and make runs resumable after crashes; NYSE-holiday aware; scheduled with OpenClaw cron on a headless Apple-silicon server; holdings never leave the machine.</li>
+                <li><strong>Local-LLM Portfolio Research Agent (Jun 2026): </strong>Ran a fully local agent (Qwen3.5-122B on Ollama through OpenClaw, with web-search tools) to research a 40-position equity portfolio: per-holding reports (business model, valuation multiples, catalysts, risks, analyst targets), a portfolio-level sector and concentration review, and a 40-to-15 position rebalancing roadmap under a value-based growth framework, published as a linked Obsidian wiki.</li>
+                <li><strong>LLM-Guided Causal Graph Selection: </strong>Fine-tuned LLMs (LoRA/QLoRA; Mistral-7B, Llama-3-8B) with chain-of-thought prompting to select ground-truth DAGs from equivalence classes, integrating domain knowledge with data-driven reasoning.</li>
+                <li><strong>Solution-Set Transformer for Brain Classification: </strong>Designing a two-level architecture (graph encoder + Set Transformer + classifier) that learns diagnostic biomarkers from multiple candidate causal graphs per subject — uniquely enabled by RASL’s multi-solution output.</li>
+                <li><strong>Net Worth &amp; Portfolio Estimator: </strong>Built a Python tool that ingests Yahoo Finance API data (yfinance), brokerage CSV exports, and real-estate valuations into a unified portfolio and net-worth model with per-position breakdown.</li>
+                <li><strong>iOS Accent-Learning App: </strong>Swift app leveraging OpenAI Whisper for speech recognition with quantitative pronunciation feedback.</li>
+                <li><strong>LLM + Knowledge Graph Reasoning: </strong>Integrated Llama 3 with knowledge graphs to improve logical reasoning on riddle-solving tasks.</li>
+                <li><strong>GAN Robustness for Autonomous Driving: </strong>Trained GANs to augment street-sign datasets, improving classification under adverse weather using multimodal inputs.</li>
             </ul>
 
             <h2>Publications</h2>
             <ul>
-                <li>M. Abavisani, D. Danks, S. Plis. GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints. ICLR 2023 (Oral, Top 25%)</li>
-                <li>M. Abavisani et al. RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series. Submitted to NeurIPS 2026.</li>
-                <li>K. Solovyeva, D. Danks, M. Abavisani, S. Plis. Causal Learning through Deliberate Undersampling. CLeaR / PMLR 2023.</li>
-                <li>P. Nair et al. (incl. M. Abavisani). ION-C: Integration of Overlapping Networks via Constraints. arXiv 2024.</li>
-                <li>A. Naghizadeh, M. Abavisani, D. Metaxas. Greedy AutoAugment. Pattern Recognition Letters 2020.</li>
-                <li>A. Mobiny et al. (incl. M. Abavisani). Radiologist-Level COVID-19 Detection via Capsule Networks. arXiv 2020.</li>
+                <li><strong>M. Abavisani</strong>, D. Danks, S. Plis. <em>GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints.</em> ICLR23 <strong>(Oral, Top 25%)</strong></li>
+                <li><strong>M. Abavisani</strong> et al. <em>RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series.</em><strong> NeurIPS 2026.</strong></li>
+                <li>K. Solovyeva, D. Danks, <strong>M. Abavisani</strong>, S. Plis. <em>Causal Learning through Deliberate Undersampling.</em> CLeaR / PMLR 2023.</li>
+                <li>P. Nair et al. (incl. <strong>M. Abavisani</strong>). <em>ION-C: Integration of Overlapping Networks via Constraints.</em> Under review, ICLR 2027.</li>
+                <li>A. Naghizadeh, <strong>M. Abavisani</strong>, D. Metaxas. <em>Greedy AutoAugment.</em> Pattern Recognition Letters 2020.</li>
+                <li>A. Mobiny et al. (incl. <strong>M. Abavisani</strong>). <em>Radiologist-Level COVID-19 Detection via Capsule Networks.</em> arXiv 2020.</li>
             </ul>
 
             <h2>Honors</h2>

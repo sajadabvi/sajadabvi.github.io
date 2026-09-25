@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="760" rx="14" fill="#ffffff"/>
+  <text x="600" y="42" text-anchor="middle" font-size="24" font-weight="700" fill="#1e293b">Morning Brief — autonomous daily market research on local LLMs</text>
+  <text x="600" y="68" text-anchor="middle" font-size="15" fill="#64748b">Seven checkpointed stages, every LLM call bounded to a fixed-size slice; runs unattended before each market open on an Apple-silicon home server</text>
+
+  <!-- Row A: sources -->
+  <text x="44" y="108" font-size="13" font-weight="700" fill="#64748b" letter-spacing="1.5">KEYLESS SOURCES</text>
+  <g font-size="15" fill="#1e293b">
+    <rect x="44" y="118" width="350" height="54" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="219" y="141" text-anchor="middle" font-weight="600">yfinance quotes</text>
+    <text x="219" y="161" text-anchor="middle" font-size="13" fill="#475569">holdings · gold · silver · 10Y yield · bitcoin</text>
+    <rect x="425" y="118" width="350" height="54" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="600" y="141" text-anchor="middle" font-weight="600">Google News RSS</text>
+    <text x="600" y="161" text-anchor="middle" font-size="13" fill="#475569">per-stock · sector · macro assets · market-wide</text>
+    <rect x="806" y="118" width="350" height="54" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="981" y="141" text-anchor="middle" font-weight="600">NYSE calendar</text>
+    <text x="981" y="161" text-anchor="middle" font-size="13" fill="#475569">exits immediately on market holidays</text>
+  </g>
+  <line x1="600" y1="172" x2="600" y2="204" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Row B: 7 stages -->
+  <text x="44" y="200" font-size="13" font-weight="700" fill="#64748b" letter-spacing="1.5">PIPELINE · 7 STAGES</text>
+  <g font-size="14">
+    <!-- stage boxes: x = 44 + i*162, width 140 -->
+    <rect x="44" y="212" width="140" height="78" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="114" y="238" text-anchor="middle" font-weight="700" fill="#1e293b">1 · Market</text>
+    <text x="114" y="258" text-anchor="middle" font-size="12.5" fill="#475569">quotes + significance</text>
+    <text x="114" y="276" text-anchor="middle" font-size="12" fill="#94a3b8">no LLM</text>
+
+    <rect x="206" y="212" width="140" height="78" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="276" y="238" text-anchor="middle" font-weight="700" fill="#1e293b">2 · News</text>
+    <text x="276" y="258" text-anchor="middle" font-size="12.5" fill="#475569">fetch · dedupe · trim</text>
+    <text x="276" y="276" text-anchor="middle" font-size="12" fill="#94a3b8">no LLM</text>
+
+    <rect x="368" y="212" width="140" height="78" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="438" y="238" text-anchor="middle" font-weight="700" fill="#1e3a8a">3 · Council filter</text>
+    <text x="438" y="258" text-anchor="middle" font-size="12.5" fill="#1e40af">two-model local vote</text>
+    <text x="438" y="276" text-anchor="middle" font-size="12" fill="#3b82f6">local LLM</text>
+
+    <rect x="530" y="212" width="140" height="78" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="600" y="238" text-anchor="middle" font-weight="700" fill="#1e3a8a">4 · Summarize</text>
+    <text x="600" y="258" text-anchor="middle" font-size="12.5" fill="#1e40af">brief per ticker/asset</text>
+    <text x="600" y="276" text-anchor="middle" font-size="12" fill="#3b82f6">≤ 8 articles / call</text>
+
+    <rect x="692" y="212" width="140" height="78" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="762" y="238" text-anchor="middle" font-weight="700" fill="#1e3a8a">5 · Calendar</text>
+    <text x="762" y="258" text-anchor="middle" font-size="12.5" fill="#1e40af">earnings-date extraction</text>
+    <text x="762" y="276" text-anchor="middle" font-size="12" fill="#3b82f6">small model</text>
+
+    <rect x="854" y="212" width="140" height="78" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="924" y="238" text-anchor="middle" font-weight="700" fill="#1e3a8a">6 · Digest</text>
+    <text x="924" y="258" text-anchor="middle" font-size="12.5" fill="#1e40af">headline + closing</text>
+    <text x="924" y="276" text-anchor="middle" font-size="12" fill="#3b82f6">from briefs only</text>
+
+    <rect x="1016" y="212" width="140" height="78" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="1086" y="238" text-anchor="middle" font-weight="700" fill="#1e293b">7 · Send</text>
+    <text x="1086" y="258" text-anchor="middle" font-size="12.5" fill="#475569">Mail.app · Telegram</text>
+    <text x="1086" y="276" text-anchor="middle" font-size="12" fill="#94a3b8">no LLM</text>
+
+    <g stroke="#64748b" stroke-width="2" marker-end="url(#arr)">
+      <line x1="184" y1="251" x2="204" y2="251"/><line x1="346" y1="251" x2="366" y2="251"/><line x1="508" y1="251" x2="528" y2="251"/>
+      <line x1="670" y1="251" x2="690" y2="251"/><line x1="832" y1="251" x2="852" y2="251"/><line x1="994" y1="251" x2="1014" y2="251"/>
+    </g>
+  </g>
+  <text x="600" y="318" text-anchor="middle" font-size="13" fill="#64748b">each stage writes state/runs/&lt;date&gt;/&lt;stage&gt;.json → a crash, reboot, or Ollama hiccup resumes from the first incomplete stage, never redoing LLM work</text>
+
+  <!-- Row C left: council inset -->
+  <line x1="438" y1="290" x2="438" y2="350" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrb)"/>
+  <rect x="44" y="352" width="620" height="210" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="64" y="380" font-size="13" font-weight="700" fill="#1d4ed8" letter-spacing="1.5">STAGE 3 · TWO-MODEL LOCAL COUNCIL (OLLAMA)</text>
+  <rect x="64" y="398" width="240" height="64" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="184" y="423" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Gemma 4 · triage</text>
+  <text x="184" y="444" text-anchor="middle" font-size="12.5" fill="#475569">every article, ~500 chars/call · tuned for recall</text>
+  <line x1="304" y1="430" x2="356" y2="430" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrb)"/>
+  <rect x="358" y="398" width="286" height="64" rx="10" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="501" y="423" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Qwen3.5-122B · verdict</text>
+  <text x="501" y="444" text-anchor="middle" font-size="12.5" fill="#475569">re-judges survivors in one bounded batch · precision</text>
+  <rect x="64" y="480" width="580" height="60" rx="10" fill="#1e40af"/>
+  <text x="354" y="505" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">an article is “material” only if both models agree</text>
+  <text x="354" y="526" text-anchor="middle" font-size="12.5" fill="#bfdbfe">unanimous vote → signal, not volume · a failed judgment drops one item, never the run</text>
+
+  <!-- Row C right: outputs + ops -->
+  <line x1="1086" y1="290" x2="1086" y2="350" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="700" y="352" width="456" height="210" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="720" y="380" font-size="13" font-weight="700" fill="#64748b" letter-spacing="1.5">DELIVERY · EVERY TRADING DAY</text>
+  <g font-size="14" fill="#1e293b">
+    <rect x="720" y="396" width="200" height="44" rx="9" fill="#ffffff" stroke="#cbd5e1"/><text x="820" y="423" text-anchor="middle" font-weight="600">Email digest · 8 AM ET</text>
+    <rect x="936" y="396" width="200" height="44" rx="9" fill="#ffffff" stroke="#cbd5e1"/><text x="1036" y="423" text-anchor="middle" font-weight="600">Telegram short form</text>
+    <rect x="720" y="452" width="200" height="44" rx="9" fill="#ffffff" stroke="#cbd5e1"/><text x="820" y="479" text-anchor="middle" font-weight="600">Google Calendar events</text>
+    <rect x="936" y="452" width="200" height="44" rx="9" fill="#ffffff" stroke="#cbd5e1"/><text x="1036" y="479" text-anchor="middle" font-weight="600">Monday week-ahead mail</text>
+  </g>
+  <text x="720" y="522" font-size="12.5" fill="#475569">Scheduled by OpenClaw cron: 4:15 AM run · 7:45 AM send safety net (exactly-once)</text>
+  <text x="720" y="542" font-size="12.5" fill="#475569">Holdings CSV is gitignored — real positions never leave the machine</text>
+
+  <!-- Row D: companion council service -->
+  <rect x="44" y="590" width="1112" height="140" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="64" y="618" font-size="13" font-weight="700" fill="#64748b" letter-spacing="1.5">COMPANION · LLM COUNCIL SERVICE (extends karpathy/llm-council)</text>
+  <g font-size="14" fill="#1e293b">
+    <rect x="64" y="636" width="230" height="70" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="179" y="662" text-anchor="middle" font-weight="700">1 · First opinions</text>
+    <text x="179" y="684" text-anchor="middle" font-size="12.5" fill="#475569">Qwen3.5-122B + Gemma 4, locally</text>
+    <line x1="294" y1="671" x2="326" y2="671" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="328" y="636" width="250" height="70" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="453" y="662" text-anchor="middle" font-weight="700">2 · Anonymized peer review</text>
+    <text x="453" y="684" text-anchor="middle" font-size="12.5" fill="#475569">each model ranks the others’ answers</text>
+    <line x1="578" y1="671" x2="610" y2="671" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="612" y="636" width="230" height="70" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="727" y="662" text-anchor="middle" font-weight="700" fill="#1e3a8a">3 · Chairman decides</text>
+    <text x="727" y="684" text-anchor="middle" font-size="12.5" fill="#1e40af">GPT-5.5 (closed-source API)</text>
+    <line x1="842" y1="671" x2="874" y2="671" stroke="#64748b" stroke-width="2" marker-end="url(#arr)"/>
+    <rect x="876" y="636" width="260" height="70" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="1006" y="662" text-anchor="middle" font-weight="700">OpenAI-compatible endpoint</text>
+    <text x="1006" y="684" text-anchor="middle" font-size="12.5" fill="#475569">/v1 · model id “council” · any agent can call it</text>
+  </g>
+</svg>
