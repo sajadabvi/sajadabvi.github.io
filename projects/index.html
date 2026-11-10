@@ -166,6 +166,38 @@
 
             <h2 class="section-title">Research Projects</h2>
 
+            <!-- Brain-as-Language: transformers for causal discovery (fmri_tokens_causal) -->
+            <div class="project-card" id="project-brain-tokens">
+                <div class="project-header">
+                    <h3 class="project-title">Brain-as-Language: Transformers for Causal Discovery from Slowly Sampled Data</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>Earlier work in this line (GRACE-C, RnR) recovers causal structure from slowly sampled recordings with exact combinatorial solvers. This project asks whether a learned model can take over that role: treat multichannel brain recordings as a language with a discrete "brain vocabulary", train transformers on the token sequences, and let the network read directed structure from data sampled more slowly than the process that generated it. <strong>Status:</strong> paper in preparation; all results so far are on simulated data.</p>
+
+                        <p><strong>What was built, and what it showed:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>A vocabulary that survives slow sampling:</strong> one interpretable symbol per brain region per sample, provably closed under temporal undersampling, so sampling more slowly is exactly the same as deleting token "sentences" (checked byte for byte on synthetic cases). On linear (VAR) data, eight-level symbols cost at most 0.017 AUROC of directed structure compared with the continuous signal.</li>
+                            <li><strong>An amortized transformer:</strong> axial attention over time and over regions with a lag-aware pair readout, trained on about one million recordings generated on the fly (roughly 960k per run, about 21 minutes on one A100). It scores directed links at 0.71–0.77 AUROC across sampling rates, while time-shuffled and time-shifted controls stay at chance.</li>
+                            <li><strong>Where the information lives:</strong> a likelihood ranker over second-order statistics picks the true graph among candidates the exact solver cannot tell apart, first in 86% of cases with 140 samples and 100% with 500, versus 61% for a simplicity prior (simulated linear data sampled at half rate).</li>
+                            <li><strong>Controls before claims:</strong> every learned result has to beat a data-free prior and shuffled-time controls. These checks caught a data-leakage bug in a synthetic benchmark before any result was reported, and redirected the architecture to permutation-equivariant region embeddings.</li>
+                        </ul>
+
+                        <p><strong>Stack:</strong> PyTorch research package (simulator with hemodynamic response and undersampling, tokenizers, transformers, structure readouts, metrics) with unit tests; about 60 SLURM jobs on A100 and H100 GPUs; HCP and FBIRN fMRI time courses staged on the cluster; clingo for the solver baselines.</p>
+                    </div>
+                    <div class="project-figures">
+                        <div class="figure-container">
+                            <img src="/images/brain_tokens_fig1.svg" alt="Pipeline from a fast causal graph through the simulator, brain vocabulary and axial transformer to directed-link scores, with the controls and the likelihood-ranker result">
+                            <p class="figure-caption">The simulated training and evaluation pipeline, the controls every result must clear, and where the identifying information turned out to live.</p>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/fmri_tokens_causal" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Solution-Set Transformer Project -->
             <div class="project-card" id="project-solution-set-transformer">
                 <div class="project-header">
@@ -398,7 +430,9 @@
                             <li><strong>Three-stage lexicographic optimization</strong> within a single solve call: density → latent structure → edge orientation, preserving global optimality guarantees at every stage.</li>
                         </ul>
 
-                        <p><strong>Results:</strong> <strong>45% F1 improvement</strong> over SOTA baselines. Robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates. Validated on real resting-state fMRI for schizophrenia detection.</p>
+                        <p><strong>Results:</strong> <strong>45% higher edge F1</strong> than the four methods whose output it refines. Robust performance on simulated fMRI data, accurately preserving the BOLD signal across varying undersampling rates.</p>
+
+                        <p><strong>Application to schizophrenia (under review at Network Neuroscience).</strong> On resting-state fMRI from the multi-site FBIRN study (311 subjects, patients and controls), RnR recovered substantially more group-differentiating directed connections than five single-timescale estimators. Instead of a single graph it returns every graph consistent with the data, each tagged with the sampling rate that would produce it, and labels each recovered direction as stable across those rates or timescale-dependent. An audit of the preprocessing step raised the cross-subject reproducibility of the estimated graphs (Jaccard overlap) from 0.31 to 0.46.</p>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
@@ -416,6 +450,7 @@
                     </div>
                     <div class="project-links">
                         <a href="/papers/Highway_to_Causality__Rock_n__RASL_Tunes_Up_Noisy_Data_with_Answer_Set_Programming.pdf" target="_blank" rel="noopener noreferrer" class="project-link">Read Paper</a>
+                        <a href="https://doi.org/10.64898/2026.08.09.743708" target="_blank" rel="noopener noreferrer" class="project-link">Schizophrenia Preprint (bioRxiv)</a>
                         <a href="https://github.com/sajadabvi/gunfolds" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
                     </div>
                 </div>
@@ -470,7 +505,7 @@
                             <li><strong>7 · Send</strong> — email through Mail.app (no stored credentials) with a best-effort Telegram short form. No LLM.</li>
                         </ul>
 
-                        <p>Every stage writes <code>state/runs/&lt;date&gt;/&lt;stage&gt;.json</code>, so a crash, reboot, or Ollama hiccup resumes from the first incomplete stage without re-spending LLM time. A failed quote, feed, or judgment drops that one item, never the run. Scheduling lives in <strong>OpenClaw cron</strong>: a 4:15 AM ET run on trading days (exits immediately on NYSE holidays), a 7:45 AM send safety net with an exactly-once checkpoint, and a Monday week-ahead email.</p>
+                        <p>Every stage writes <code>state/runs/&lt;date&gt;/&lt;stage&gt;.json</code>, so a crash, reboot, or Ollama hiccup resumes from the first incomplete stage without re-spending LLM time. A failed quote, feed, or judgment drops that one item, never the run. Scheduling lives in <strong>OpenClaw cron</strong>: a 4:15 AM ET run on trading days (exits immediately on NYSE holidays), a 7:45 AM safety net that resends the digest only if it was composed but never delivered, and a Monday week-ahead email.</p>
 
                         <p><strong>The council service.</strong> A companion project extends <em>karpathy/llm-council</em> into a hybrid council: two local models answer independently, then anonymously review and rank each other's responses, and a closed-source chairman (GPT-5.5) synthesizes the final decision. It is served as an OpenAI-compatible FastAPI endpoint (model id <code>council</code>) and registered as a model provider in OpenClaw, so any agent can request a deliberated answer as if it were a single model.</p>
 
@@ -520,7 +555,7 @@
 
                         <p>Every value is labeled by provenance — <strong>Measured</strong> (native counters or proxy metadata), <strong>Reported</strong> (returned by Ollama), <strong>Inferred</strong> (estimated from CPU), or <strong>Unavailable</strong> — so the dashboard never shows a misleading zero for something the source does not expose.</p>
 
-                        <p><strong>Stack:</strong> Swift/AppKit, WebKit, JavaScript, Ollama HTTP API, macOS process and memory counters; dependency-free at runtime, built with the Apple Command Line Tools for macOS 13+.</p>
+                        <p><strong>Stack:</strong> Objective-C/AppKit, WebKit, JavaScript, Python, Ollama HTTP API, macOS process and memory counters; dependency-free at runtime, built with the Apple Command Line Tools for macOS 13+.</p>
                     </div>
                     <div class="project-figures">
                         <div class="figure-container">
@@ -615,6 +650,33 @@
                 </div>
             </div>
 
+            <!-- LearnPiano iPad app -->
+            <div class="project-card" id="project-learn-piano">
+                <div class="project-header">
+                    <h3 class="project-title">LearnPiano: Interactive Piano Tutor for iPad</h3>
+                    <span class="project-toggle">▼</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-description">
+                        <p><strong>LearnPiano</strong> is a native SwiftUI app for iPad (iPadOS 18+, no third-party packages) that teaches piano the way interactive tutors do, plus one thing they do not: import sheet music found online and practice it the same day. <strong>Status:</strong> in development.</p>
+
+                        <p><strong>What it does:</strong></p>
+                        <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Engraved two-staff notation</strong> (SMuFL Bravura font) with a moving cursor, synchronized with an 88-key keyboard and falling-note lanes that demonstrate each passage.</li>
+                            <li><strong>Note recognition</strong> from a USB or Bluetooth MIDI keyboard (CoreMIDI) or the iPad microphone, using FFT-based pitch detection (Accelerate/vDSP) that keeps the learner's notes even when they sit on harmonics of the app's own accompaniment.</li>
+                            <li><strong>Practice modes:</strong> Wait Mode, where the score advances only when the right notes are played, and Just Play, with looping, slow-down, separate hands, metronome and count-in over a synthesized piano (AVAudioEngine).</li>
+                            <li><strong>Sheet-music import:</strong> MusicXML/MXL and MIDI files are parsed directly; PDF and photo pages are transcribed by the Claude API into a compact JSON score format constrained by a schema, then checked measure by measure, with any errors sent back for up to two repair rounds.</li>
+                            <li><strong>Content:</strong> 42 bundled MusicXML arrangements at several difficulty levels and a structured course curriculum.</li>
+                        </ul>
+
+                        <p><strong>Engineering:</strong> 14 modules with written interface contracts around a shared core model, about 30,000 lines of Swift, and more than 500 unit tests; layout, parsing, pitch detection and synthesis run off the main thread.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/sajadabvi/learn_piano_IOS" target="_blank" rel="noopener noreferrer" class="project-link">View Code</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- LLM & Knowledge Graphs (older) -->
             <div class="project-card" id="project-llm-knowledge-graphs">
                 <div class="project-header">
@@ -684,7 +746,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Sajad Abavisani. All rights reserved.</p>
+        <p>&copy; 2026 Sajad Abavisani. All rights reserved.</p>
     </footer>
 
     <script src="/scripts/navigation.js?v=2.2" defer></script>

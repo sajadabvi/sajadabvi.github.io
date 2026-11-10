@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#93c5fd"/></marker>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <polyline points="55.0,135.0 57.4,137.5 59.8,139.9 62.2,142.1 64.7,144.1 67.1,145.8 69.5,147.2 71.9,148.2 74.3,148.8 76.8,149.0 79.2,148.7 81.6,148.0 84.0,146.9 86.4,145.4 88.8,143.6 91.2,141.5 93.7,139.2 96.1,136.8 98.5,134.3 100.9,131.9 103.3,129.5 105.8,127.3 108.2,125.4 110.6,123.7 113.0,122.4 115.4,121.6 117.8,121.1 120.2,121.0 122.7,121.4 125.1,122.3 127.5,123.5 129.9,125.1 132.3,127.0 134.8,129.1 137.2,131.4 139.6,133.9 142.0,136.4 144.4,138.8 146.8,141.1 149.2,143.2 151.7,145.1 154.1,146.6 156.5,147.8 158.9,148.6 161.3,149.0 163.8,148.9 166.2,148.4 168.6,147.4 171.0,146.1 173.4,144.4 175.8,142.5 178.2,140.3 180.7,137.9 183.1,135.4 185.5,133.0 187.9,130.6 190.3,128.3 192.8,126.2 195.2,124.4 197.6,123.0 200.0,121.9" fill="none" stroke="#475569" stroke-width="2.5"/>
+  <circle cx="62" cy="141.9" r="5" fill="#93c5fd"/>
+  <circle cx="96" cy="136.9" r="5" fill="#93c5fd"/>
+  <circle cx="130" cy="125.1" r="5" fill="#93c5fd"/>
+  <circle cx="164" cy="148.9" r="5" fill="#93c5fd"/>
+  <circle cx="198" cy="122.8" r="5" fill="#93c5fd"/>
+  <polyline points="55.0,193.5 57.4,193.9 59.8,194.0 62.2,193.9 64.7,193.5 67.1,192.8 69.5,191.9 71.9,190.8 74.3,189.5 76.8,188.0 79.2,186.4 81.6,184.6 84.0,182.8 86.4,180.9 88.8,178.9 91.2,177.0 93.7,175.2 96.1,173.5 98.5,171.8 100.9,170.4 103.3,169.1 105.8,168.0 108.2,167.1 110.6,166.5 113.0,166.1 115.4,166.0 117.8,166.2 120.2,166.6 122.7,167.2 125.1,168.1 127.5,169.3 129.9,170.6 132.3,172.1 134.8,173.7 137.2,175.5 139.6,177.4 142.0,179.3 144.4,181.2 146.8,183.1 149.2,184.9 151.7,186.6 154.1,188.3 156.5,189.7 158.9,191.0 161.3,192.1 163.8,192.9 166.2,193.5 168.6,193.9 171.0,194.0 173.4,193.8 175.8,193.4 178.2,192.7 180.7,191.8 183.1,190.7 185.5,189.3 187.9,187.8 190.3,186.2 192.8,184.4 195.2,182.5 197.6,180.6 200.0,178.7" fill="none" stroke="#475569" stroke-width="2.5"/>
+  <circle cx="62" cy="193.9" r="5" fill="#93c5fd"/>
+  <circle cx="96" cy="173.5" r="5" fill="#93c5fd"/>
+  <circle cx="130" cy="170.6" r="5" fill="#93c5fd"/>
+  <circle cx="164" cy="193.0" r="5" fill="#93c5fd"/>
+  <circle cx="198" cy="180.3" r="5" fill="#93c5fd"/>
+  <polyline points="55.0,234.5 57.4,232.1 59.8,229.4 62.2,226.6 64.7,223.7 67.1,220.8 69.5,218.1 71.9,215.7 74.3,213.7 76.8,212.3 79.2,211.3 81.6,211.0 84.0,211.3 86.4,212.2 88.8,213.6 91.2,215.5 93.7,217.9 96.1,220.6 98.5,223.4 100.9,226.3 103.3,229.2 105.8,231.9 108.2,234.3 110.6,236.3 113.0,237.7 115.4,238.7 117.8,239.0 120.2,238.7 122.7,237.8 125.1,236.4 127.5,234.5 129.9,232.1 132.3,229.4 134.8,226.6 137.2,223.7 139.6,220.8 142.0,218.1 144.4,215.7 146.8,213.7 149.2,212.3 151.7,211.3 154.1,211.0 156.5,211.3 158.9,212.2 161.3,213.6 163.8,215.5 166.2,217.9 168.6,220.6 171.0,223.4 173.4,226.3 175.8,229.2 178.2,231.9 180.7,234.3 183.1,236.3 185.5,237.7 187.9,238.7 190.3,239.0 192.8,238.7 195.2,237.8 197.6,236.4 200.0,234.5" fill="none" stroke="#475569" stroke-width="2.5"/>
+  <circle cx="62" cy="226.9" r="5" fill="#93c5fd"/>
+  <circle cx="96" cy="220.5" r="5" fill="#93c5fd"/>
+  <circle cx="130" cy="232.0" r="5" fill="#93c5fd"/>
+  <circle cx="164" cy="215.8" r="5" fill="#93c5fd"/>
+  <circle cx="198" cy="236.1" r="5" fill="#93c5fd"/>
+  <polyline points="55.0,263.8 57.4,262.0 59.8,260.3 62.2,258.9 64.7,257.7 67.1,256.8 69.5,256.3 71.9,256.0 74.3,256.1 76.8,256.5 79.2,257.2 81.6,258.2 84.0,259.5 86.4,261.1 88.8,262.8 91.2,264.7 93.7,266.7 96.1,268.9 98.5,271.0 100.9,273.1 103.3,275.2 105.8,277.1 108.2,278.8 110.6,280.4 113.0,281.7 115.4,282.7 117.8,283.5 120.2,283.9 122.7,284.0 125.1,283.8 127.5,283.2 129.9,282.3 132.3,281.2 134.8,279.8 137.2,278.1 139.6,276.3 142.0,274.3 144.4,272.3 146.8,270.1 149.2,268.0 151.7,265.9 154.1,263.9 156.5,262.1 158.9,260.4 161.3,258.9 163.8,257.8 166.2,256.9 168.6,256.3 171.0,256.0 173.4,256.1 175.8,256.5 178.2,257.2 180.7,258.2 183.1,259.4 185.5,261.0 187.9,262.7 190.3,264.6 192.8,266.6 195.2,268.8 197.6,270.9 200.0,273.0" fill="none" stroke="#475569" stroke-width="2.5"/>
+  <circle cx="62" cy="259.0" r="5" fill="#93c5fd"/>
+  <circle cx="96" cy="268.8" r="5" fill="#93c5fd"/>
+  <circle cx="130" cy="282.3" r="5" fill="#93c5fd"/>
+  <circle cx="164" cy="257.7" r="5" fill="#93c5fd"/>
+  <circle cx="198" cy="271.3" r="5" fill="#93c5fd"/>
+  <rect x="262" y="118" width="22" height="34" rx="4" fill="#60a5fa"/>
+  <rect x="289" y="118" width="22" height="34" rx="4" fill="#60a5fa"/>
+  <rect x="316" y="118" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="343" y="118" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="370" y="118" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="262" y="163" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="289" y="163" width="22" height="34" rx="4" fill="#2563eb"/>
+  <rect x="316" y="163" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="343" y="163" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="370" y="163" width="22" height="34" rx="4" fill="#60a5fa"/>
+  <rect x="262" y="208" width="22" height="34" rx="4" fill="#60a5fa"/>
+  <rect x="289" y="208" width="22" height="34" rx="4" fill="#2563eb"/>
+  <rect x="316" y="208" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="343" y="208" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="370" y="208" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="262" y="253" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="289" y="253" width="22" height="34" rx="4" fill="#2563eb"/>
+  <rect x="316" y="253" width="22" height="34" rx="4" fill="#bfdbfe"/>
+  <rect x="343" y="253" width="22" height="34" rx="4" fill="#1e40af"/>
+  <rect x="370" y="253" width="22" height="34" rx="4" fill="#60a5fa"/>
+  <rect x="450" y="104" width="154" height="178" rx="14" fill="#1e293b" stroke="#60a5fa" stroke-width="2" opacity="0.45"/>
+  <rect x="444" y="110" width="154" height="178" rx="14" fill="#1e293b" stroke="#60a5fa" stroke-width="2" opacity="0.7"/>
+  <rect x="438" y="116" width="154" height="178" rx="14" fill="#1e293b" stroke="#60a5fa" stroke-width="2" opacity="1.0"/>
+  <text x="515" y="196" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">axial</text>
+  <text x="515" y="226" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">transformer</text>
+  <text x="515" y="256" text-anchor="middle" font-size="17" fill="#94a3b8">time × region</text>
+  <line x1="684.3" y1="154.8" x2="723.8" y2="166.6" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="739.8" y1="188.9" x2="732.5" y2="243.2" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="666.5" y1="166.9" x2="661.7" y2="221.1" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="676.2" y1="245.1" x2="711.9" y2="256.3" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <circle cx="668" cy="150" r="15" fill="#3b82f6" stroke="#bfdbfe" stroke-width="2.5"/>
+  <circle cx="742" cy="172" r="15" fill="#3b82f6" stroke="#bfdbfe" stroke-width="2.5"/>
+  <circle cx="730" cy="262" r="15" fill="#3b82f6" stroke="#bfdbfe" stroke-width="2.5"/>
+  <circle cx="660" cy="240" r="15" fill="#3b82f6" stroke="#bfdbfe" stroke-width="2.5"/>
+  <line x1="212" y1="205" x2="250" y2="205" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="396" y1="205" x2="428" y2="205" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <line x1="606" y1="205" x2="640" y2="205" stroke="#93c5fd" stroke-width="3" marker-end="url(#a)"/>
+  <text x="128" y="338" text-anchor="middle" font-size="19" font-weight="600" fill="#cbd5e1">slow samples</text>
+  <text x="325" y="338" text-anchor="middle" font-size="19" font-weight="600" fill="#cbd5e1">tokens</text>
+  <text x="515" y="338" text-anchor="middle" font-size="19" font-weight="600" fill="#cbd5e1">learned model</text>
+  <text x="702" y="338" text-anchor="middle" font-size="19" font-weight="600" fill="#cbd5e1">directed links</text>
+  <text x="400" y="408" text-anchor="middle" font-size="19" fill="#94a3b8">learning causal structure from slowly sampled recordings</text>
+</svg>

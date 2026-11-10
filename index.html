@@ -89,6 +89,11 @@
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
+        @media (min-width: 900px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
         .skill-category {
             background: white;
             border-radius: 0.5rem;
@@ -295,8 +300,8 @@
             <img src="/images/profile.jpg" alt="Sajad Abavisani" class="profile-image">
             <h1>Sajad Abavisani</h1>
             <p class="subtitle">Ph.D., Georgia Tech · Causal AI Researcher</p>
-            <p>Building the causal layer of AI — algorithms that are not just accurate, but trustworthy enough to deploy in neuroscience, finance, and healthcare. ICLR 2023 Oral · NeurIPS 2026 · 10,000× speedup in causal discovery · validated on real fMRI for schizophrenia detection. Lately: autonomous agents on local LLMs that research markets every morning.</p>
-            <p>Actively seeking <strong>Research Scientist</strong> and <strong>Applied ML</strong> roles. Green Card pending — no sponsorship required.</p>
+            <p>Building the causal layer of AI — algorithms that are not just accurate, but trustworthy enough to deploy in neuroscience, finance, and healthcare. ICLR 2023 Oral · NeurIPS 2026 · 10,000× speedup in causal discovery · applied to fMRI from 311 people with and without schizophrenia. Lately: whether transformers can learn causal structure directly from slowly sampled recordings, and agents on local LLMs that research markets every morning.</p>
+            <p>Actively seeking <strong>Research Scientist</strong>, <strong>Applied Scientist</strong>, and <strong>Quantitative Researcher</strong> roles. U.S. permanent resident (green card holder) — no sponsorship required.</p>
             
             <div class="social-links">
                 <a href="https://github.com/sajadabvi" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-button github">
@@ -363,8 +368,9 @@
             </div>
             <div class="publications-card">
                 <ul class="publications-list">
-                    <li><strong>RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series</strong> – NeurIPS 2026, accepted (45% F1 improvement over SOTA)</li>
-                    <li><strong>GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</strong> – ICLR 2023 (Oral Presentation, Top 25%)</li>
+                    <li><strong>RnR: A Meta-Solver for Causal Discovery in Undersampled Time Series</strong> – NeurIPS 2026, accepted (45% higher edge F1 than four widely used methods)</li>
+                    <li><strong>Recovering Directional Brain Networks under Temporal Undersampling: An Application to Schizophrenia</strong> – Under review at Network Neuroscience (<a href="https://doi.org/10.64898/2026.08.09.743708" target="_blank" rel="noopener noreferrer">bioRxiv preprint</a>, 2026)</li>
+                    <li><strong>GRACE-C: Generalized Rate Agnostic Causal Estimation via Constraints</strong> – ICLR 2023 (notable top 25%, oral presentation)</li>
                     <li><strong>Causal Learning through Deliberate Undersampling</strong> – Proceedings of the Second Conference on Causal Learning and Reasoning (2023)</li>
                     <li><strong>Reducing Causal Illusions through Deliberate Undersampling</strong> – NeurIPS 2022 Workshop (2022)</li>
                     <li><strong>Greedy AutoAugment</strong> – Pattern Recognition Letters Journal (Elsevier, 2020)</li>
@@ -385,7 +391,7 @@
                     <img src="/images/gracec1.png" alt="GRACE-C Research" class="highlight-image">
                     <div class="highlight-content">
                         <h3 class="highlight-title">GRACE-C: Generalized Rate Agnostic Causal Estimation</h3>
-                        <p class="highlight-description">A breakthrough method for causal discovery in undersampled time series data, achieving up to 3 orders of magnitude speed improvement. Presented at ICLR 2023 (Oral, Top 25%).</p>
+                        <p class="highlight-description">A breakthrough method for causal discovery in undersampled time series data, cutting a benchmark from 17 hours to 6 seconds. ICLR 2023 (notable top 25%, oral presentation).</p>
                         <a href="/projects/#project-grace-c" class="highlight-link">Learn More →</a>
                     </div>
                 </div>
@@ -393,8 +399,16 @@
                     <img src="/images/causal_puzzle_fig2.png" alt="RnR Meta-Solver Research" class="highlight-image">
                     <div class="highlight-content">
                         <h3 class="highlight-title">RnR: Meta-Solver for Causal Discovery</h3>
-                        <p class="highlight-description">An ASP-based meta-solver that refines outputs from any causal discovery algorithm (PCMCI, FASK, MVGC, GIMME), delivering 45% F1 improvement over SOTA. Accepted at NeurIPS 2026.</p>
+                        <p class="highlight-description">An ASP-based meta-solver that refines outputs from any causal discovery algorithm (PCMCI, FASK, MVGC, GIMME), raising edge F1 by 45% over those methods. Accepted at NeurIPS 2026; its schizophrenia fMRI application is under review at Network Neuroscience.</p>
                         <a href="/projects/#project-rnr" class="highlight-link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="/images/brain_tokens_card.svg" alt="Slowly sampled recordings turned into tokens and read by a transformer that outputs a directed graph" class="highlight-image">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Brain-as-Language: Transformers for Causal Discovery</h3>
+                        <p class="highlight-description">Can a learned model take over from an exact solver? A discrete brain vocabulary that is provably closed under slower sampling, and a time × region transformer trained on ~1M simulated recordings that scores directed links at 0.71–0.77 AUROC. Paper in preparation.</p>
+                        <a href="/projects/#project-brain-tokens" class="highlight-link">Learn More →</a>
                     </div>
                 </div>
                 <div class="highlight-card">
@@ -483,7 +497,7 @@
                     <img src="/images/causal_puzzle_fig2.png" alt="RnR Causal Discovery" class="highlight-image">
                     <div class="highlight-content">
                         <h3 class="highlight-title">RnR: Causal Discovery Meta-Solver</h3>
-                        <p class="highlight-description">Answer Set Programming meta-solver that recovers true causal structure from undersampled, noisy neuroimaging time series — validated on real fMRI for schizophrenia detection. Accepted at NeurIPS 2026.</p>
+                        <p class="highlight-description">Answer Set Programming meta-solver that recovers true causal structure from undersampled, noisy neuroimaging time series — applied to fMRI from 311 people with and without schizophrenia. Accepted at NeurIPS 2026.</p>
                         <a href="/projects/#project-rnr" class="highlight-link">View Details →</a>
                     </div>
                 </div>
@@ -499,26 +513,34 @@
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Languages</h3>
-                    <p class="skill-list">Python, C++, JavaScript, R, Java, SQL, Clingo/ASP</p>
+                    <p class="skill-list">Python (primary), C++, Java, R, SQL, Bash</p>
                 </div>
                 <div class="skill-category">
-                    <h3>ML &amp; Deep Learning</h3>
-                    <p class="skill-list">PyTorch (CUDA), TensorFlow, Hugging Face (Transformers, PEFT, Datasets), LLM fine-tuning, RAG pipelines (LangChain, LlamaIndex), Graph Neural Networks (PyTorch Geometric), Transformers, GANs, Diffusion Models, Capsule Networks, Scikit-learn</p>
+                    <h3>ML &amp; Statistics</h3>
+                    <p class="skill-list">PyTorch, TensorFlow, scikit-learn, NumPy, SciPy, pandas, statsmodels; hypothesis testing, bootstrap, false discovery rate control</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Data &amp; Infrastructure</h3>
-                    <p class="skill-list">Pandas, NumPy, SciPy, NetworkX, Statsmodels, Docker, AWS, Azure ML, W&amp;B, MLflow, Git, GitHub Actions CI/CD, Linux, SLURM clusters</p>
+                    <h3>Causal Inference &amp; Time Series</h3>
+                    <p class="skill-list">Causal discovery, Granger causality, VAR, PCMCI, multivariate time-series modeling, evaluation design with pre-specified baselines and negative controls</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Specializations</h3>
-                    <p class="skill-list">Causal inference, constraint programming (ASP/Clingo), graph algorithms, time series analysis &amp; forecasting, statistical modeling, Bayesian inference, optimization, open-source development (PyPI), agentic coding (Claude Code, Cursor)</p>
+                    <h3>LLM Systems</h3>
+                    <p class="skill-list">Hugging Face Transformers and PEFT (LoRA/QLoRA), retrieval-augmented generation, multi-agent pipelines, evaluation harnesses, local inference (Ollama), FastAPI</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Graphs &amp; Optimization</h3>
+                    <p class="skill-list">Graph algorithms, combinatorial optimization (answer set programming, clingo)</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Infrastructure</h3>
+                    <p class="skill-list">Linux, SLURM HPC clusters (A100/H100 GPUs), Docker, Git, GitHub Actions CI/CD, pytest, AI-assisted development (Claude Code)</p>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Sajad Abavisani. All rights reserved.</p>
+        <p>&copy; 2026 Sajad Abavisani. All rights reserved.</p>
     </footer>
 
     <script src="/scripts/navigation.js?v=2.2" defer></script>
